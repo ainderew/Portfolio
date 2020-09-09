@@ -45,7 +45,7 @@ const Header = ({toggleContact}) =>{
         <div className={headerClass ? Styles.header : `${Styles.header} ${Styles.headerHide}`}>
             <div className={Styles.row1}>
                 <Link className="text-link-none" to="/">
-                    <h2 className={Styles.Logo}>Andrew's Blog <span className={Styles.logoSpan}>.</span></h2>
+                    <h2 className={Styles.Logo}>Andrew's Portfolio <span className={Styles.logoSpan}>.</span></h2>
                 </Link>
             </div>
             <div className={Styles.row2}>
