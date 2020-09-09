@@ -1,0 +1,37 @@
+@import "../../SCSS/variables/colors";
+.contactForm{
+    
+    width: auto;
+    height: 10rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    background: $color1;
+    z-index: 9;
+    padding: 2rem;
+    box-shadow: $box-shadow;
+    text-align: center;
+    
+    
+    .contactText{
+        color: white;
+        font-weight: 400;
+    }
+    
+    .span{
+        font-weight: 600;
+        color: $font-secondary;
+        
+    }
+    
+    .close{
+        position: absolute;
+        right: 5%;
+        top: 10%;
+        width: 1rem;
+    }
+}

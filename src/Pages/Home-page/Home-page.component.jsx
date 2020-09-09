@@ -1,7 +1,9 @@
-import React, {useRef, useEffect} from "react";
+import React, {useRef, useEffect, useState} from "react";
 import Styles from "./Home-page.module.scss";
 import Rellax from "rellax";
 import { Link } from "react-router-dom";
+
+import ContactForm from "../../Components/Contact-form/contact-form.component";
 
 //IMAGES
 import BackgroundOverlay from "../../Assets/background-overlaly.svg";
@@ -20,7 +22,7 @@ import Yflights from "../../Assets/3.png";
 import vuse from "../../Assets/4.png";
 import codeage from "../../Assets/5.png";
 import myGoals from "../../Assets/6.svg";
-const Homepage = () =>{
+const Homepage = ({contactState, toggleContact}) =>{
     
     let section2 = useRef(null)
     
@@ -29,8 +31,12 @@ const Homepage = () =>{
         const section2Parallax = new Rellax(section2)
     }, []);
     
+    
+   
     return(
         <div className="page">
+            {contactState? <ContactForm toggleContact={toggleContact} />: null}
+            
             <section className={Styles.section1} ref={el=> section2 = el}  data-rellax-speed="-9">
                 <img src={human} alt="" className={Styles.human} />
                 <img src={BackgroundOverlay} alt="" className={Styles.overlay} />

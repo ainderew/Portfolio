@@ -2,10 +2,10 @@ import React, {useEffect, useState} from "react";
 import Styles from "./header.module.scss";
 import * as _ from "underscore"
 import { Link } from "react-router-dom";
-
+import ContactForm from "../Contact-form/contact-form.component";
 
 let lastScrollTop = window.pageYOffset;
-const Header = () =>{
+const Header = ({toggleContact}) =>{
     
     const [headerClass, setHeaderClass] = useState(true)
     
@@ -39,6 +39,8 @@ const Header = () =>{
          
     }, [])
     
+    
+    
     return(
         <div className={headerClass ? Styles.header : `${Styles.header} ${Styles.headerHide}`}>
             <div className={Styles.row1}>
@@ -63,8 +65,10 @@ const Header = () =>{
             </div>
             
             <div className={Styles.row3}>
-                <button className={Styles.button}>Get in touch</button>
+                <button onClick={toggleContact} className={Styles.button}>Get in touch</button>
             </div>
+            
+     
         </div>
     )
 }
