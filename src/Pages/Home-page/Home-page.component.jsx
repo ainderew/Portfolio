@@ -82,9 +82,9 @@ const Homepage = ({contactState, toggleContact}) =>{
                         <span className={Styles.blogLabel}>Website</span>
                         <img src={Yflights} alt="desk" className={Styles.blog3Img}/>
                         <h2 className={Styles.blogTitleContainer3}>Y-Flights</h2>
-                        <a target="_blank" href="https://y-flights.com/">
+                        {/* <a target="_blank" href="https://y-flights.com/">
                             <button className={Styles.readBlogBtn}>View Project</button>
-                        </a>
+                        </a> */}
                     </div>
                     
                     {/* BLOG */}
