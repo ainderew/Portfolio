@@ -3,17 +3,15 @@ import Styles from "./Home-page.module.scss";
 import Rellax from "rellax";
 import { Link } from "react-router-dom";
 
+import GraphicsSection from "./graphic-page/Graphic-page.component";
 import ContactForm from "../../Components/Contact-form/contact-form.component";
 
 //IMAGES
 import BackgroundOverlay from "../../Assets/background-overlaly.svg";
 import BackgroundOverlay2 from "../../Assets/background-overlaly2.svg";
-import made4Learing from "../../Assets/Top Blogs/made4Learing.png";
-import helpingHand from "../../Assets/Top Blogs/helpinghand.png";
-import Coffee from "../../Assets/Top Blogs/coffee.png";
-import Desk from "../../Assets/Top Blogs/desk.png";
 
-import human from "../../Assets/e.png";
+
+import human from "../../Assets/r.jpg";
 
 import aksel from "../../Assets/1.jpg";
 
@@ -22,6 +20,7 @@ import Yflights from "../../Assets/3.png";
 import vuse from "../../Assets/4.png";
 import codeage from "../../Assets/5.png";
 import myGoals from "../../Assets/6.svg";
+
 const Homepage = ({contactState, toggleContact}) =>{
     
     let section2 = useRef(null)
@@ -42,9 +41,9 @@ const Homepage = ({contactState, toggleContact}) =>{
                 <img src={BackgroundOverlay} alt="" className={Styles.overlay} />
                 
                 <div className={Styles.textContainer}>
-                    <p className={Styles.subHeader}>A PEEK INSIDE A DEVELOPER'S</p>
+                    <p className={Styles.subHeader}>Hi I'm Andrew and this is my</p>
                     <h2 className={Styles.mainHeader}>PORTFOLIO</h2>
-                    <p className={Styles.nameHeader}>Andrew Piñon</p>
+                    <p className={Styles.nameHeader}>Have a look</p>
                 </div>
             </section>
             
@@ -116,6 +115,8 @@ const Homepage = ({contactState, toggleContact}) =>{
                     </div>
                 </div>
             </section>
+            
+            <GraphicsSection/>
             
             {/* <section className={Styles.section1}></section> */}
         </div>
