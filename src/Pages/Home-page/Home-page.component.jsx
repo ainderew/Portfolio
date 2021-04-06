@@ -79,9 +79,12 @@ const Homepage = ({contactState, toggleContact}) =>{
                     {/* BLOG */}
                     <div className={`${Styles.container} ${Styles.gridTall} ${Styles.article3}`}>
                         <span className={Styles.blogLabel}>Website</span>
-                        <img src={Yflights} alt="desk" className={Styles.blog3Img}/>
-                        <h2 className={Styles.blogTitleContainer3}>Y-Flights</h2>
+                        <img src={Yflights} alt="PIT Portal" className={Styles.blog3Img}/>
+                        <h2 className={Styles.blogTitleContainer3}>PIT Portal</h2>
                         
+                        <a target="_blank" href="https://pit-shs.com/">
+                            <button className={Styles.readBlogBtn}>View Project</button>
+                        </a>
                     </div>
                     
                     {/* BLOG */}
