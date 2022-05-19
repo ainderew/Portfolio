@@ -3,10 +3,10 @@ import {motion} from "framer-motion"
 import { fadeIn, scaleLine } from "../framer-animation/variants"
 
 
-import github from "../assets/github.svg"
-import twitter from "../assets/twitter.svg"
-import insta from "../assets/insta.svg"
-import linkedin from "../assets/linkedin.svg"
+import github from "../public/assets/github.svg"
+import twitter from "../public/assets/twitter.svg"
+import insta from "../public/assets/insta.svg"
+import linkedin from "../public/assets/linkedin.svg"
 const SocialWidget:React.FC = () =>{
     return(
         <div className=" social-widget-container flex flex-col gap-6 justify-between items-center fixed bottom-0 left-14">

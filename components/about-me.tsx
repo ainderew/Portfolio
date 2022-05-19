@@ -1,5 +1,5 @@
 import Image from "next/image";
-import me from "../assets/me.png";
+import me from "../public/assets/me.png";
 
 const AboutMe: React.FC = () => {
   return (
