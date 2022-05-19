@@ -17,17 +17,17 @@ const Banner: React.FC = () => {
         variants={fadeIn("up")}
         className="text-5xl font-semibold text-[#0AA1DD]"
       >
-        I'm a full-stack web developer.
+        I&apos;m a full-stack web developer.
       </motion.h2>
 
       <motion.p
         variants={fadeIn("up")}
         className="text- 2xl:break-words 2xl:w-[40%] text-justify mt-7"
       >
-        I'm a Philippine based software engineer that has knack for creating and
-        building digital solutions to problems on the web. Currently I'm
-        freelancing and if you're ready to create an exceptional digital
-        experience let's get in contact.
+        I&apos;m a Philippine based software engineer that has knack for creating and
+        building digital solutions to problems on the web. Currently I&apos;m
+        freelancing and if you&apos;re ready to create an exceptional digital
+        experience let&apos;s get in contact.
       </motion.p>
 
       <motion.button

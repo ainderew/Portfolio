@@ -6,7 +6,7 @@ const AboutMe: React.FC = () => {
     <div className="h-full min-h-[80vh]  w-full px-7 xl:px-64 mt-[0vh] grid grid-cols-1 xl:grid-cols-2 gap-4 xl:gap-20 2xl:gap-40">
       <div className="flex flex-col gap-4 borsder-2 border-black">
         <p className="text-sm 2xl:text-base text-justify">
-          Hi! my name is Andrew most likely I'm the guy that is asked to fix the
+          Hi! my name is Andrew most likely I&apos;m the guy that is asked to fix the
           wifi when it goes out. I enjoy creating digital experiences that live
           on the web, where practicality, problem solving and visual experience
           mix to form a perfect storm.
