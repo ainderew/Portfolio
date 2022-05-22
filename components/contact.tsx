@@ -32,7 +32,7 @@ const Contact: React.FC = () => {
                 delay: .3
             }
         }}
-        className="text-5xl font-semibold">Let's Talk It Out</motion.p>
+        className="text-5xl font-semibold">Let&apos;s Talk It Out</motion.p>
         <motion.p
        initial={{
            opacity: 0,
