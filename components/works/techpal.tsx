@@ -50,6 +50,7 @@ const WorksTechpal: React.FC<props> = ({ start, stop }) => {
               <a
                 href="https://github.com/ainderew/"
                 target="_blank"
+                rel="noopener noreferrer"
                 className="flex gap-4 text-xl"
               >
                 <Image src={github} width={20} height={20} />

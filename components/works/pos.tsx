@@ -54,6 +54,7 @@ const WorksPos: React.FC = () => {
               <a
                 href="https://github.com/ainderew/POSandInventoryManagement"
                 target="_blank"
+                rel="noopener noreferrer"
                 className="flex gap-4 text-xl"
               >
                 <Image src={github} width={20} height={20} />
