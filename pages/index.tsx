@@ -7,6 +7,8 @@ import { motion } from "framer-motion";
 import { staggerContainer } from "../framer-animation/variants";
 import SocialWidget from "../components/social-widget";
 import AboutMeBanner from "../components/about-me-banner";
+import Works from "../components/works";
+import Contact from "../components/contact";
 
 const Home: NextPage = () => {
   return (
@@ -15,19 +17,20 @@ const Home: NextPage = () => {
         variants={staggerContainer}
         initial="initial"
         animate="animate"
-        className="stagger-wrapper "
+        className="stagger-wrapper"
       >
         <WebNav />
         <Banner />
         <SocialWidget />
       </motion.div>
-      {/* <div className="h-screen"></div> */}
+
       <div className="first-stick-container h-full sticky top-0 -z-10">
-      <AboutMeBanner />
+        <AboutMeBanner />
         <AboutMe />
       </div>
 
-      <div className="bg-black z-20 w-full h-screen"></div>
+      <Works />
+      <Contact />
     </div>
   );
 };

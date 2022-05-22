@@ -17,6 +17,17 @@ export const fadeIn = (direction: "up" | "down"): Variants => {
   };
 };
 
+export const fadeOut: Variants = {
+  initial:{
+    opacity: 1,
+    y:0,
+  },
+  animate:{
+    opacity: 0,
+    y:40,
+  }
+}
+
 export const scaleLine: Variants = {
   initial: {
     scaleY: 0,

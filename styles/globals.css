@@ -20,8 +20,19 @@ a {
   scroll-behavior: smooth;
 }
 
-/* colors */
-/* main:#92B4EC */
-/* white: #FFFFFF */
-/* light-yellow: #FFE69A */
-/* dark-yellow: #FFD24C */
+.hide {
+  transform: translateY(50px);
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.show {
+  transform: translateY(0px);
+  opacity: 1;
+  transition: 0.3s;
+}
+
+.custom-work-shadow {
+  background: #ffffff;
+  box-shadow: -5px -5px 14px #dbdbdb, 5px 5px 14px #ffffff;
+}
