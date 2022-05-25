@@ -83,7 +83,7 @@ const WorksTechpal: React.FC<props> = ({ start, stop }) => {
         }}
       >
         <div className="w-full max-w-[950px] h-1/2 max-h-[531px] relative">
-          <Image src={projectImg} layout="fill" placeholder="blur" blurDataURL="../../public/assets/loading.webp" />
+          <Image src={projectImg} layout="fill" placeholder="blur" blurDataURL="/assets/loading.webp" />
         </div>
       </motion.div>
     </motion.div>
