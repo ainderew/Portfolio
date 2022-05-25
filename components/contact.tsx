@@ -45,7 +45,7 @@ const Contact: React.FC = () => {
                 delay: .3
             }
         }}
-        className="break-words w-[30%] text-center">
+        className="break-words xl:w-[30%] text-center">
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam
           reiciendis quam neque sequi, enim nobis illum, repellat officiis
           laudantium nam quisquam quibusdam molestias amet natus.

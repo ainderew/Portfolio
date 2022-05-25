@@ -12,10 +12,10 @@ const SocialWidget:React.FC = () =>{
     const classValue = useScrollHider();
 
     return(
-        <div className={`social-widget-container flex flex-col gap-6 justify-between items-center fixed bottom-0 left-14 z-20 ${classValue}`}>
+        <div className={`social-widget-container flex flex-col gap-4 xl:gap-6 justify-between items-center fixed bottom-0 right-14 xl:right-auto left-auto xl:left-14 z-20 ${classValue}`}>
             <motion.div
             variants={fadeIn("up")}
-            className="w-[2rem] h-[2rem] relative">
+            className="w-[1.5rem] h-[1.5rem] xl:w-[2rem] xl:h-[2rem] relative">
                 <Image
                     src={github}
                     layout="fill"
@@ -24,7 +24,7 @@ const SocialWidget:React.FC = () =>{
             </motion.div>
             <motion.div
             variants={fadeIn("up")}
-            className="w-[2rem] h-[2rem] relative">
+            className="w-[1.5rem] h-[1.5rem] xl:w-[2rem] xl:h-[2rem] relative">
                 <Image
                     src={linkedin}
                     layout="fill"
@@ -33,7 +33,7 @@ const SocialWidget:React.FC = () =>{
             </motion.div>
             <motion.div
             variants={fadeIn("up")}
-            className="w-[2rem] h-[2rem] relative">
+            className="w-[1.5rem] h-[1.5rem] xl:w-[2rem] xl:h-[2rem] relative">
                 <Image
                     src={twitter}
                     layout="fill"
@@ -42,7 +42,7 @@ const SocialWidget:React.FC = () =>{
             </motion.div>
             <motion.div
             variants={fadeIn("up")}
-            className="w-[2rem] h-[2rem] relative">
+            className="w-[1.5rem] h-[1.5rem] xl:w-[2rem] xl:h-[2rem] relative">
                 <Image
                     src={insta}
                     layout="fill"
@@ -52,7 +52,7 @@ const SocialWidget:React.FC = () =>{
 
             <motion.div
             variants={scaleLine}
-            className="w-0 h-32 mt-4 border-l-[2px] border-[#0AA1DD]"></motion.div>
+            className="w-0 h-24 mt-2 border-l-[2px] border-[#0AA1DD]"></motion.div>
         </div>
     )
 }

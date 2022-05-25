@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { motion, useTransform, useViewportScroll } from "framer-motion";
 
-import projectImg from "../../public/assets/techpal.webp";
+import projectImg from "../../public/assets/tp.gif";
 import github from "../../public/assets/github_black.svg";
 import web from "../../public/assets/web.svg";
 

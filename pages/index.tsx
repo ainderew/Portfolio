@@ -9,6 +9,7 @@ import SocialWidget from "../components/social-widget";
 import AboutMeBanner from "../components/about-me-banner";
 import Works from "../components/works";
 import Contact from "../components/contact";
+import WorkMobile from "../components/work-mobile";
 
 const Home: NextPage = () => {
   return (
@@ -30,6 +31,7 @@ const Home: NextPage = () => {
       </div>
 
       <Works />
+      <WorkMobile />
       <Contact />
     </div>
   );
