@@ -3,6 +3,8 @@ import { motion, useTransform, useViewportScroll } from "framer-motion";
 import { useRefScrollProgress } from "../../hooks/scrollObserver";
 
 import projectImg from "../../public/assets/pos_pic.png";
+import loading from "../../public/assets/loading.webp";
+
 import github from "../../public/assets/github_black.svg";
 import web from "../../public/assets/web.svg";
 
@@ -86,7 +88,7 @@ const WorksPos: React.FC = () => {
         }}
       >
         <div className="w-full max-w-[950px] h-1/2 max-h-[531px] relative">
-          <Image src={projectImg} layout="fill" objectFit="contain" />
+          <Image src={projectImg} layout="fill" objectFit="contain" placeholder="blur" blurDataURL="../../public/assets/loading.webp" />
         </div>
       </motion.div>
     </motion.div>

@@ -2,6 +2,8 @@ import Image from "next/image";
 import { motion, useTransform, useViewportScroll } from "framer-motion";
 
 import projectImg from "../../public/assets/tp.gif";
+import loading from "../../public/assets/loading.webp";
+
 import github from "../../public/assets/github_black.svg";
 import web from "../../public/assets/web.svg";
 
@@ -81,7 +83,7 @@ const WorksTechpal: React.FC<props> = ({ start, stop }) => {
         }}
       >
         <div className="w-full max-w-[950px] h-1/2 max-h-[531px] relative">
-          <Image src={projectImg} layout="fill" placeholder="blur" />
+          <Image src={projectImg} layout="fill" placeholder="blur" blurDataURL="../../public/assets/loading.webp" />
         </div>
       </motion.div>
     </motion.div>
