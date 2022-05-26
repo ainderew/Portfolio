@@ -3,7 +3,12 @@ import { useRefScrollProgress } from "../hooks/scrollObserver";
 import WorksPos from "./works/pos";
 import WorksTechpal from "./works/techpal";
 
-const Works: React.FC = () => {
+
+interface props{
+  pageRef:any
+}
+
+const Works: React.FC<props> = ({pageRef}:props) => {
   const { scrollYProgress } = useViewportScroll();
   const [ref_text, start, stop] = useRefScrollProgress();
 
@@ -14,7 +19,7 @@ const Works: React.FC = () => {
   const opacityAnim = useTransform(scrollYProgress, [start-0.1, stop], [0, 1]);
 
   return (
-    <div className="w-full h-[270vh] min-h-screen bg-white relative hidden xl:flex flex-col items-center custom-work-shadow">
+    <div ref={pageRef}  className="w-full h-[270vh] min-h-screen bg-white relative hidden xl:flex flex-col items-center custom-work-shadow">
       <div
         ref={ref_text}
         className="h-[30vh] w-[70%] max-w-[1344px] flex justify-between items-end bordder-2 border-black"

@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import type { NextPage } from "next";
 import AboutMe from "../components/about-me";
 import Banner from "../components/banner";
@@ -12,6 +13,14 @@ import Contact from "../components/contact";
 import WorkMobile from "../components/work-mobile";
 
 const Home: NextPage = () => {
+  const workRef = useRef<HTMLDivElement>(null);
+
+  const scrollToWork: () => void = () => {
+    if (workRef.current) {
+      workRef.current.scrollIntoView();
+    }
+  };
+
   return (
     <div className="main h-full w-full relative">
       <motion.div
@@ -21,7 +30,7 @@ const Home: NextPage = () => {
         className="stagger-wrapper"
       >
         <WebNav />
-        <Banner />
+        <Banner scrollFunction={scrollToWork} />
         <SocialWidget />
       </motion.div>
 
@@ -30,7 +39,7 @@ const Home: NextPage = () => {
         <AboutMe />
       </div>
 
-      <Works />
+      <Works pageRef={workRef} />
       <WorkMobile />
       <Contact />
     </div>

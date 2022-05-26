@@ -4,7 +4,11 @@ import me from "../assets/me.png";
 import { motion } from "framer-motion";
 import { fadeIn, staggerContainer } from "../framer-animation/variants";
 
-const Banner: React.FC = () => {
+interface props{
+  scrollFunction: () => void
+}
+
+const Banner: React.FC<props> = ({scrollFunction}:props) => {
   return (
     <div className="w-[90%] xl:w-[70%] max-w-[1344px] h-auto mx-auto">
       {/* <div className="w-full h-screen relative flex flex-col gap-2 justify-center px-7 xl:px-64  bg-[#[#EFEFEF]"> */}
@@ -35,6 +39,7 @@ const Banner: React.FC = () => {
         <motion.button
           variants={fadeIn("up")}
           className="h-[3rem] w-[10rem] text-base border-accent text-accent border-2 mt-7"
+          onClick={scrollFunction}
         >
           My work
         </motion.button>
