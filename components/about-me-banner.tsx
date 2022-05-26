@@ -1,8 +1,12 @@
-import { useEffect } from "react";
+import { RefObject, useEffect } from "react";
 import { motion, useTransform, useViewportScroll } from "framer-motion";
 import { useRefScrollProgress } from "../hooks/scrollObserver";
 
-const AboutMeBanner: React.FC = () => {
+interface props{
+  aboutRef: RefObject<HTMLDivElement>
+}
+
+const AboutMeBanner: React.FC<props> = ({aboutRef}:props) => {
   const { scrollYProgress } = useViewportScroll();
   const [refDiv, start, end] = useRefScrollProgress();
 
@@ -24,7 +28,7 @@ const AboutMeBanner: React.FC = () => {
   return (
     <div ref={refDiv} className="w-full h-full bsorder-2 bordder-green-300">
       <div
-        // className="h-[10vh] xl:h-[20vh] 2xl:h-[30vh] w-full px-7 xl:px-64 m-auto bodrder-2 border-black"
+        ref={aboutRef}
         className="h-[10vh] xl:h-[20vh] 2xl:h-[30vh] w-[90%] xl:w-[70%] max-w-[1344px] mx-auto bordder-2 border-black"
       >
         <div className="w-full h-full flex items-center xl:items-start 2xl:items-center justify-between overflow-hidden bosrder-2 border-red-500">

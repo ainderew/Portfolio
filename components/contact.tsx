@@ -1,12 +1,18 @@
+import { RefObject } from "react";
 import { motion } from "framer-motion";
 import { staggerContainer, fadeIn } from "../framer-animation/variants";
 
-const Contact: React.FC = () => {
+interface props {
+  contactRef: RefObject<HTMLDivElement>;
+}
+
+const Contact: React.FC<props> = ({ contactRef }: props) => {
   const openMail = () => {
-    window.open('mailto:andrewapinon@gmail.com?subject=Inquiry');
+    window.open("mailto:andrewapinon@gmail.com?subject=Inquiry");
   };
   return (
     <motion.div
+      ref={contactRef}
       variants={staggerContainer}
       className="w-full h-screen bg-white"
     >

@@ -14,10 +14,24 @@ import WorkMobile from "../components/work-mobile";
 
 const Home: NextPage = () => {
   const workRef = useRef<HTMLDivElement>(null);
+  const contactRef = useRef<HTMLDivElement>(null);
+  const aboutRef = useRef<HTMLDivElement>(null);
 
   const scrollToWork: () => void = () => {
     if (workRef.current) {
       workRef.current.scrollIntoView();
+    }
+  };
+
+  const scrollToAbout: () => void = () => {
+    if (aboutRef.current) {
+      aboutRef.current.scrollIntoView();
+    }
+  };
+
+  const scrollToContact: () => void = () => {
+    if (contactRef.current) {
+      contactRef.current.scrollIntoView();
     }
   };
 
@@ -29,19 +43,19 @@ const Home: NextPage = () => {
         animate="animate"
         className="stagger-wrapper"
       >
-        <WebNav />
+        <WebNav scrollToWork={scrollToWork} scrollToAbout={scrollToAbout} scrollToContact={scrollToContact}  />
         <Banner scrollFunction={scrollToWork} />
         <SocialWidget />
       </motion.div>
 
       <div className="first-stick-container h-full sticky top-0 -z-10">
-        <AboutMeBanner />
+        <AboutMeBanner aboutRef={aboutRef} />
         <AboutMe />
       </div>
       <div ref={workRef} className="w-0 h-0"></div>
-      <Works  />
+      <Works />
       <WorkMobile />
-      <Contact />
+      <Contact contactRef={contactRef} />
     </div>
   );
 };

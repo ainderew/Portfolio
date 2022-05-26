@@ -3,7 +3,17 @@ import { motion } from "framer-motion";
 import { fadeIn } from "../framer-animation/variants";
 import { useScrollHider } from "../hooks/scrollHide";
 
-const WebNav: React.FC = () => {
+interface props {
+  scrollToWork: () => void;
+  scrollToAbout: () => void;
+  scrollToContact: () => void;
+}
+
+const WebNav: React.FC<props> = ({
+  scrollToWork,
+  scrollToAbout,
+  scrollToContact,
+}: props) => {
   const classValue = useScrollHider();
 
   return (
@@ -15,13 +25,25 @@ const WebNav: React.FC = () => {
       </motion.div>
       <div className="flex-[2] bosrder-2 border-white">
         <ul className="justify-end flex gap-4 px-10">
-          <motion.li variants={fadeIn("up")} className="text-regular ">
+          <motion.li
+            onClick={scrollToAbout}
+            variants={fadeIn("up")}
+            className="text-base font-normal hover:text-accent cursor-pointer transition-all duration-150"
+          >
             About
           </motion.li>
-          <motion.li variants={fadeIn("up")} className="text-regular ">
+          <motion.li
+            onClick={scrollToWork}
+            variants={fadeIn("up")}
+            className="text-base font-normal hover:text-accent cursor-pointer transition-all duration-150"
+          >
             Works
           </motion.li>
-          <motion.li variants={fadeIn("up")} className="text-regular ">
+          <motion.li
+            onClick={scrollToContact}
+            variants={fadeIn("up")}
+            className="text-base font-normal hover:text-accent cursor-pointer transition-all duration-150"
+          >
             Contact
           </motion.li>
         </ul>
