@@ -46,9 +46,8 @@ const Contact: React.FC = () => {
             }
         }}
         className="break-words xl:w-[30%] text-center">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam
-          reiciendis quam neque sequi, enim nobis illum, repellat officiis
-          laudantium nam quisquam quibusdam molestias amet natus.
+          I'm very eager to hear and work with you so we can execute on your ideas.
+          My email is open for those looking to implement technology driven strategies and ideas into reality.
         </motion.p>
 
         <motion.button
