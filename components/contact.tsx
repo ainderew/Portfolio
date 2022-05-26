@@ -63,7 +63,7 @@ const Contact: React.FC<props> = ({ contactRef }: props) => {
           }}
           className="break-words xl:w-[30%] text-center"
         >
-          I'm very eager to hear and work with you so we can execute on your
+          I&apos;m very eager to hear and work with you so we can execute on your
           ideas. My email is open for those looking to implement technology
           driven strategies and ideas into reality.
         </motion.p>
