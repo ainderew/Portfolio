@@ -38,8 +38,8 @@ const Home: NextPage = () => {
         <AboutMeBanner />
         <AboutMe />
       </div>
-
-      <Works pageRef={workRef} />
+      <div ref={workRef} className="w-0 h-0"></div>
+      <Works  />
       <WorkMobile />
       <Contact />
     </div>
