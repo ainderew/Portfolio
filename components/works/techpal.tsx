@@ -40,7 +40,7 @@ const WorksTechpal: React.FC<props> = ({ start, stop }) => {
         <div className="content-container flex flex-col gap-4 ">
           <h2 className="project-heading text-7xl font-bold mb-10">Techpal</h2>
           <p className="role-heading text-3xl font-medium">
-            Full Stack Developer
+            Front End Developer
           </p>
           <p className="project-description text-2xl break-words ">
             An ecommerce website built with NextJS for a computer retail store.

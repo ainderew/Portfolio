@@ -77,7 +77,7 @@ const WorksPos: React.FC = () => {
         </div>
 
         <p className="text-xl font-semibold absolute bottom-10 left-10">
-          Electron - Typescript - ReactJS
+          Electron - Typescript - ReactJS - SQLite  (local DB) - NodeJS - MySQL
         </p>
       </motion.div>
 
