@@ -2,7 +2,7 @@
 // import me from '../assets/me.png';
 
 import { motion } from 'framer-motion';
-import { fadeIn, staggerContainer } from '../framer-animation/variants';
+import { fadeIn } from '../framer-animation/variants';
 
 interface props{
   scrollFunction: () => void
