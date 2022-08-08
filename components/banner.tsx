@@ -32,7 +32,7 @@ const Banner: React.FC<props> = ({scrollFunction}:props) => {
 				>
           I&apos;m a Philippine based software engineer that has knack for
           creating and building digital solutions to problems on the web.
-          Currently I currenty work at Theoria Medical but I'm still open to 
+          Currently I currenty work at Theoria Medical but I&apos;m still open to 
 					projects. Let&apos;s create your own digital experience!
 				</motion.p>
 
