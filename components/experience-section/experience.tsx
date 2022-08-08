@@ -63,23 +63,22 @@ const Experience: React.FC = () => {
 				</div>
 			</div>
 
-			<div className="job-table w-[85%] xl:w-[70%] max-w-[1344px] h-full grid grid-cols-1 mx-0 xl:grid-cols-[1fr_2fr] grid-rows-[10vh_1fr] xl:grid-rows-1">
-				<div className="left-col xl:p-14 ">
-					<div className="line-container ">
-						<ul className="flex xl:flex-col">
-							{jobList.map((el) => {
-								return (
-									<div className="list-container relative" key={el.experienceKey}>
-										<ExperienceList  label={el.name} experienceKey={el.experienceKey} active={experienceKey === el.experienceKey ? true: false} clickHandler={handleExperienceClick} />	
-										{(experienceKey === el.experienceKey) ? <motion.div className="line absolute bottom-0 left-0 w-full xl:w-2 h-1 xl:h-full bg-accent" layoutId="line" /> : null}
-									</div>
-								);
-							})}
-							
-						</ul>
-					</div>
+			<div className="job-table w-full xl:w-[70%] max-w-[1344px] h-full grid grid-cols-1 mx-0 xl:grid-cols-[1fr_2fr] grid-rows-[10vh_1fr] xl:grid-rows-1 justify-items-center">
+				<div className="left-col xl:p-14 w-[100vw] overflow-auto">
+					
+					<ul className="flex xl:flex-col">
+						{jobList.map((el) => {
+							return (
+								<div className="list-container relative" key={el.experienceKey} >
+									<ExperienceList  label={el.name} experienceKey={el.experienceKey} active={experienceKey === el.experienceKey ? true: false} clickHandler={handleExperienceClick} />	
+									{(experienceKey === el.experienceKey) ? <motion.div className="line z-10 absolute bottom-[-1px] right-0 left-0 w-full xl:w-2 h-1 xl:h-full bg-accent" layoutId="line" /> : null}
+								</div>
+							);
+						})}
+					</ul>
+					
 				</div>
-				<div className="right-col xl:p-14">
+				<div className="right-col w-[85%] xl:w-full xl:p-14">
 					<ExperienceDetails
 						data ={data[experienceKey]}
 					/>

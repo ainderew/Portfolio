@@ -28,7 +28,8 @@ export const experiences = {
 	[
 		'ReactJS', 'JavaScript', 'NodeJS', 'Express', 'MySql', 'Git'
 	]
-	}
+	},
+
 };
 
 export const jobList = [
@@ -39,5 +40,5 @@ export const jobList = [
 	{
 		name: 'Freelance',
 		experienceKey: 'freelance'
-	}
+	},
 ];

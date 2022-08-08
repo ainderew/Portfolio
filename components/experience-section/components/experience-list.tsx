@@ -11,8 +11,8 @@ const ExperienceList: React.FC<props> = ({ label, experienceKey, active, clickHa
 	return  (
 		<li
 			onClick={() => clickHandler(experienceKey)}
-			className={`p-4 cursor-pointer ${active && 'bg-blue-50 text-accent'}`}>
-			<span className="">{label}</span>
+			className={`p-4 min-w-[150px] max-w-[500px] border-b-4 border-gray-300 flex justify-center ${active && 'bg-blue-50 text-accent'}`}>
+			<span className="whitespace-nowrap">{label}</span>
 		</li>
 	);
 	// ) : (
