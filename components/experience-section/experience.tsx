@@ -48,33 +48,30 @@ const Experience: React.FC = () => {
 			<div className="w-[90%] xl:w-[70%] max-w-[1344px]">
 				<div
 					ref={ref_text}
-					className="h-[30vh] w-[100%] flex justify-between items-center relative"
+					className="h-[20vh] xl:h-[30vh] w-[100%] flex justify-between items-center relative"
 				>
-					<p className="text-lg xl:text-3xl font-semibold text-accent">Industry Experience</p>
+					<p className="text-base xl:text-3xl font-semibold text-accent">Industry Experience</p>
 					<motion.p
 						style={{
 							x: xTextAnim,
 							opacity: opacityAnim,
 						}}
-						className="text-4xl xl:text-6xl 2xl:text-8xl font-bold text-[#b9b9b9]"
+						className="text-2xl xl:text-6xl 2xl:text-8xl font-bold text-[#b9b9b9]"
 					>
             MY EXPERIENCE
 					</motion.p>
 				</div>
 			</div>
 
-			<div className="job-table w-[90%] xl:w-[70%] max-w-[1344px] h-full grid xl:grid-cols-[1fr_2fr] bordder-2 border-black">
-				<div className="left-col p-14 bor-2 border-black">
+			<div className="job-table w-[85%] xl:w-[70%] max-w-[1344px] h-full grid grid-cols-1 mx-0 xl:grid-cols-[1fr_2fr] grid-rows-[10vh_1fr] xl:grid-rows-1">
+				<div className="left-col xl:p-14 ">
 					<div className="line-container ">
-						<ul className="flex flex-col">
-							{/* <ExperienceList label="Theoria Medical" experienceKey="theoria" clickHandler={handleExperienceClick} />
-							<ExperienceList label="Freelance" experienceKey="freelance" clickHandler={handleExperienceClick} /> */}
-
+						<ul className="flex xl:flex-col">
 							{jobList.map((el) => {
 								return (
 									<div className="list-container relative" key={el.experienceKey}>
 										<ExperienceList  label={el.name} experienceKey={el.experienceKey} active={experienceKey === el.experienceKey ? true: false} clickHandler={handleExperienceClick} />	
-										{(experienceKey === el.experienceKey) ? <motion.div className="line absolute bottom-0 left-0 w-2 h-full bg-accent" layoutId="line" /> : null}
+										{(experienceKey === el.experienceKey) ? <motion.div className="line absolute bottom-0 left-0 w-full xl:w-2 h-1 xl:h-full bg-accent" layoutId="line" /> : null}
 									</div>
 								);
 							})}
@@ -82,7 +79,7 @@ const Experience: React.FC = () => {
 						</ul>
 					</div>
 				</div>
-				<div className="right-col p-14 bordder-2 border-red-500">
+				<div className="right-col xl:p-14">
 					<ExperienceDetails
 						data ={data[experienceKey]}
 					/>
