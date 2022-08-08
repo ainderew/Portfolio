@@ -16,24 +16,24 @@ const Banner: React.FC<props> = ({scrollFunction}:props) => {
 				<motion.p variants={fadeIn('up')} className="text-lg text-accent">
           Hi, my name is
 				</motion.p>
-				<motion.h1 variants={fadeIn('up')} className="text-5xl font-semibold">
+				<motion.h1 variants={fadeIn('up')} className="text-3xl xl:text-5xl font-semibold">
           Andrew Pinon
 				</motion.h1>
 				<motion.h2
 					variants={fadeIn('up')}
-					className="text-5xl font-semibold text-accent"
+					className="text-3xl xl:text-5xl font-semibold text-accent"
 				>
           I&apos;m a full-stack web developer.
 				</motion.h2>
 
 				<motion.p
 					variants={fadeIn('up')}
-					className="text- 2xl:break-words 2xl:w-[40%] text-justify mt-7"
+					className="text text-sm xl:text-base 2xl:break-words 2xl:w-[40%] text-justify mt-7"
 				>
           I&apos;m a Philippine based software engineer that has knack for
           creating and building digital solutions to problems on the web.
-          Currently I&apos;m freelancing and if you&apos;re ready to create an
-          exceptional digital experience let&apos;s get in contact.
+          Currently I currenty work at Theoria Medical but I'm still open to 
+					projects. Let&apos;s create your own digital experience!
 				</motion.p>
 
 				<motion.button
