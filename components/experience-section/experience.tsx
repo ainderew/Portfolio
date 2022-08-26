@@ -63,15 +63,14 @@ const Experience: React.FC = () => {
 				</div>
 			</div>
 
-			<div className="job-table w-full xl:w-[70%] max-w-[1344px] h-full grid grid-cols-1 mx-0 xl:grid-cols-[1fr_2fr] grid-rows-[10vh_1fr] xl:grid-rows-1 justify-items-center">
-				<div className="left-col xl:p-14 w-[100vw] overflow-auto">
-					
+			<div className="job-table w-full xl:w-[70%] max-w-[1344px] h-full grid grid-cols-1  xl:grid-cols-[1fr_2fr] mx-0 grid-rows-[10vh_1fr] xl:grid-rows-1 justify-items-center">
+				<div className="left-col xl:p-14 xl:w-full w-[100vw] overflow-auto">
 					<ul className="flex xl:flex-col">
 						{jobList.map((el) => {
 							return (
 								<div className="list-container relative" key={el.experienceKey} >
 									<ExperienceList  label={el.name} experienceKey={el.experienceKey} active={experienceKey === el.experienceKey ? true: false} clickHandler={handleExperienceClick} />	
-									{(experienceKey === el.experienceKey) ? <motion.div className="line z-10 absolute bottom-[-1px] right-0 left-0 w-full xl:w-2 h-1 xl:h-full bg-accent" layoutId="line" /> : null}
+									{(experienceKey === el.experienceKey) ? <motion.div className="line z-10 absolute bottom-[-1px] right-0 left-0 w-full xl:w-1 h-1 xl:h-full bg-accent" layoutId="line" /> : null}
 								</div>
 							);
 						})}
