@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import type { NextPage } from 'next';
 import AboutMe from '../components/about-me';
-import Experience from '../components/experience-section/experience';
+import Experience from '../components/pages/home/experience-section/experience';
 import Banner from '../components/banner';
 import WebNav from '../components/web-nav';
 
@@ -42,7 +42,7 @@ const Home: NextPage = () => {
 				variants={staggerContainer}
 				initial="initial"
 				animate="animate"
-				className="stagger-wrapper"
+				className="stagger-wrapper first-page"
 			>
 				<WebNav scrollToWork={scrollToWork} scrollToAbout={scrollToAbout} scrollToContact={scrollToContact}  />
 				<Banner scrollFunction={scrollToWork} />

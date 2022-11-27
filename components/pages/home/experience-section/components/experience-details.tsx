@@ -1,6 +1,6 @@
 
 import {AnimatePresence, motion} from 'framer-motion';
-import { works } from '../../../framer-animation/variants';
+import { works } from '../../../../../framer-animation/variants';
 
 type props = {
   data: {
@@ -32,7 +32,7 @@ export const ExperienceDetails = ({data}: props) => {
 						
 						
 					}}
-					className="test h-full w-full xl:w-full py-4 xl:px-8 flex flex-col"
+					className="test h-full w-full xl:w-full xl:px-8 flex flex-col"
 				>
 					<h2
 						className="position-header text-sm xl:text-lg font-semibold">
