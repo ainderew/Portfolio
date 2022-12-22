@@ -19,7 +19,7 @@ const WorkMobile: React.FC = () => {
 	);
 
 	return (
-		<div className="w-full min-h-screen px-6 bg-black xl:hidden">
+		<div className="w-full min-h-screen px-6 bg-black xl:hidden relative">
 			<div
 				ref={ref_text}
 				className="h-[20vh] w-[100%] max-w-[1344px] flex justify-between items-center bordder-2 border-black"

@@ -36,7 +36,8 @@ const WorksPos: React.FC = () => {
 				transition={{
 					ease: 'easeIn'
 				}}
-				className="left bg-white flex items-center px-32  relative"
+				className="left bg-black
+				 flex items-center px-32  relative"
 			>
 				<p className="text-4xl font-bold absolute top-10 left-10">01</p>
 
@@ -82,7 +83,7 @@ const WorksPos: React.FC = () => {
 			</motion.div>
 
 			<motion.div
-				className="right bg-white flex justify-center items-center px-32"
+				className="right bg-black flex justify-center items-center px-32"
 				style={{
 					y: yPosAnim,
 				}}

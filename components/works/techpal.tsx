@@ -29,7 +29,7 @@ const WorksTechpal: React.FC<props> = ({ start, stop }: props) => {
 			className="w-full bordder-8 border-blue-300 h-screen overflow-y-hidden grid grid-cols-2 absolute top-0"
 		>
 			<motion.div
-				className="left bg-white flex items-center px-32 relative"
+				className="left bg-black flex items-center px-32 relative"
 				style={{
 					// y: yPosAnimUp,
 					opacity: opacityAnim,
@@ -77,7 +77,7 @@ const WorksTechpal: React.FC<props> = ({ start, stop }: props) => {
 			</motion.div>
 
 			<motion.div
-				className="right bg-white flex justify-center items-center px-32"
+				className="right bg-black flex justify-center items-center px-32"
 				style={{
 					y: yPosAnim,
 				}}

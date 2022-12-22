@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import me from '../public/assets/me.png';
+import me from '../public/assets/me3.jpg';
 
 const AboutMe: React.FC = () => {
 	return (
@@ -39,12 +39,12 @@ const AboutMe: React.FC = () => {
 					</div>
 				</div>
 				<div className="h-[50vh] xl:h-full bosrder-2 border-green-300 flex">
-					<div className=" xl:h-1/2 2xl:h-2/3 w-full relative">
+					<div className=" xl:h-1/2 2xl:h-2/3 w-full relative filter grayscale">
 						<Image
 							src={me}
 							layout="fill"
-							objectFit="cover"
-							objectPosition="top"
+							objectFit="contain"
+							objectPosition="center"
 							alt="Andrew's picture"
 						/>
 					</div>

@@ -50,13 +50,13 @@ const Experience: React.FC = () => {
 				</div>
 			</div>
 
-			<div className='job-table w-full xl:w-[70%] max-w-[1344px] h-full grid grid-cols-1  xl:grid-cols-[1fr_2fr] mx-0 grid-rows-[10vh_1fr] xl:grid-rows-1 justify-items-center'>
-				<div className='left-col xl:w-full w-[100vw] pt-14 overflow-auto'>
+			<div className='job-table w-full xl:w-[70%] max-w-[1344px] h-full grid grid-cols-1 gap-2 xl:gap-10 xl:grid-cols-[1fr_2fr] mx-0 grid-rows-[10vh_1fr] xl:grid-rows-1 justify-items-center'>
+				<div className='left-col xl:w-full w-[100vw]'>
 					<ul
 						style={{
-							boxShadow: '5px 5px 10px #ebebeb, -5px -5px 10px #ffffff',
+							// boxShadow: '5px 5px 10px #ebebeb, -5px -5px 10px #ffffff',
 						}}
-						className='flex xl:flex-col'
+						className='flex xl:flex-col '
 					>
 						{jobList.map(el => {
 							return (
@@ -69,7 +69,7 @@ const Experience: React.FC = () => {
 									/>
 									{experienceKey === el.experienceKey ? (
 										<motion.div
-											className='line z-10 absolute bottom-[-1px] right-0 left-0 w-full xl:w-1 h-1 xl:h-full bg-accent'
+											className='line z-10 absolute bottom-0 right-0 left-0 w-full xl:w-[5px] h-[5px] xl:h-full bg-accent'
 											layoutId='line'
 										/>
 									) : null}
@@ -78,7 +78,10 @@ const Experience: React.FC = () => {
 						})}
 					</ul>
 				</div>
-				<div className='right-col w-[85%] xl:w-full xl:p-14'>
+				<div
+					style={{background: '#333333',
+						boxShadow: 'inset 20px 20px 60px #2c2c2c inset -20px -20px 60px #3a3a3a'}}
+					className='right-col w-[90%] xl:w-full p-5 xl:p-14 xl:h-[40rem] h-auto overflow-auto'>
 					<ExperienceDetails data={data[experienceKey]} />
 				</div>
 			</div>

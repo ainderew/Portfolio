@@ -6,6 +6,7 @@ html,
 body {
 	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
 		Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+	color: white;
 }
 
 a {
@@ -13,10 +14,12 @@ a {
 	text-decoration: none;
 }
 .setup,
-.first-page {
-  background-image: url("/bg.svg");
-  background-size: cover;
-  background-repeat:no-repeat ;
+.exp {
+	background-image: url('/bg.svg');
+	background-size: cover;
+	background-position: bottom;
+	background-repeat: no-repeat;
+	/* background-attachment: fixed; */
 }
 
 * {
@@ -24,6 +27,11 @@ a {
 	margin: 0;
 	padding: 0;
 	scroll-behavior: smooth;
+}
+
+.experience-shadow {
+	background: #000000;
+	box-shadow: 20px 20px 60px #000000, -20px -20px 60px #000000;
 }
 
 .hide {
@@ -39,6 +47,79 @@ a {
 }
 
 .custom-work-shadow {
-	background: #ffffff;
+	/* background: #ffffff; */
 	box-shadow: -5px -5px 14px #dbdbdb, 5px 5px 14px #ffffff;
+}
+
+.gradient-text {
+	background-color: #ca4246;
+	background-image: linear-gradient(180deg, #de682c, #af4261);
+
+	background-size: 100%;
+	background-repeat: repeat;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+	animation: rainbow-text-simple-animation-rev 0.75s ease forwards;
+}
+
+/* .gradient-text:hover{
+	animation: bounce 0.5s ease-in forwards;
+} */
+
+.bounce {
+	animation: bounce 600ms forwards;
+	display: inline-block;
+	color: #fcce51;
+	-webkit-text-fill-color: #fff;
+}
+
+.btn-hover{
+	background: linear-gradient(to right, #DE682C 10%, #ca4246 50%, transparent 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all .3s ease-out;
+
+}
+.btn-hover:hover{
+  background-position: left bottom;
+}
+
+
+@keyframes bounce {
+	from,
+	to {
+		transform: scale(1, 1);
+	}
+	25% {
+		transform: scale(0.9, 1.1);
+	}
+	50% {
+		transform: scale(1.1, 0.9);
+	}
+	75% {
+		transform: scale(0.95, 1.05);
+	}
+}
+
+/* Move the background and make it smaller. */
+/* Animation shown when entering the page and after the hover animation. */
+@keyframes rainbow-text-simple-animation-rev {
+	0% {
+		background-size: 650%;
+	}
+	40% {
+		background-size: 650%;
+	}
+	100% {
+		background-size: 100%;
+	}
+}
+
+@keyframes fill {
+	0% {
+		background-size: 0%;
+	}
+	100% {
+		background-size: 1%;
+	}
 }

@@ -37,7 +37,7 @@ const Home: NextPage = () => {
 	};
 
 	return (
-		<div className="main h-full w-full relative">
+		<div className="main h-full w-full relative exp">
 			<motion.div
 				variants={staggerContainer}
 				initial="initial"
@@ -51,7 +51,7 @@ const Home: NextPage = () => {
 
 			<Experience />
 
-			<div className="first-stick-container h-full sticky top-0 -z-10">
+			<div className="first-stick-container h-full sticky top-0">
 				<AboutMeBanner aboutRef={aboutRef} />
 				<AboutMe />
 			</div>

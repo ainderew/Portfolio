@@ -14,9 +14,9 @@ const Contact: React.FC<props> = ({ contactRef }: props) => {
 		<motion.div
 			ref={contactRef}
 			variants={staggerContainer}
-			className="w-full h-screen bg-white"
+			className="w-full h-screen bg-black z-10 relative"
 		>
-			<div className="w-[90%] h-full flex flex-col gap-4 justify-center items-center mx-auto">
+			<div className="w-[90%] h-full flex flex-col gap-4 justify-center items-center mx-auto bg-black z-20">
 				<motion.p
 					initial={{
 						opacity: 0,

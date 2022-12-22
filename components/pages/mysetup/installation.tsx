@@ -26,7 +26,7 @@ export const CopyArea: React.FC<ICopyArea> = ({ label, command, instructions }) 
 			<button
 				onClick={copyText}
 				ref={text}
-				className='bg-[#008cff30] px-[1rem] py-[0.5rem] rounded-md border-lightAccent whitespace-nowrap border-2 font-medium text-[#135981] flex gap-2'
+				className='bg-[#008cff30] px-[1rem] py-[0.5rem] rounded-md border-lightAccent border-2 font-light text-lightAccent flex gap-2 shrink'
 			>
 				{command}
 				<svg
@@ -48,7 +48,7 @@ export const CopyArea: React.FC<ICopyArea> = ({ label, command, instructions }) 
 
 const Installation: React.FC = () => {
 	return (
-		<div className='installation w-[70vw] flex flex-col gap-8 items-start my-14'>
+		<div className='installation w-[100%] xl:w-[70vw] flex flex-col gap-8 items-start my-14'>
 			<div className='flex flex-col gap-2'>
 				<h2 className='text-3xl font-semibold text-lightAccent'>My Setup Shortcut</h2>
 				<p className=''>
