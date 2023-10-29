@@ -5,6 +5,7 @@ import WorksTechpal from './works/techpal';
 
 import arrowDown from '../public/assets/arrow_down.svg';
 import Image from 'next/image';
+import ChatXpert from './works/ai';
 
 const Works: React.FC = () => {
 	const { scrollYProgress } = useViewportScroll();
@@ -13,6 +14,7 @@ const Works: React.FC = () => {
 	{/*  eslint-disable */}
 	const [ref_1, start_1, stop_1] = useRefScrollProgress();
 	const [ref_2, start_2, stop_2] = useRefScrollProgress();
+	const [ref_3, start_3, stop_3] = useRefScrollProgress();
 
 	const xTextAnim = useTransform(
 		scrollYProgress,
@@ -69,6 +71,7 @@ const Works: React.FC = () => {
 			<div className=" w-full max-w-[1920px] h-[100vh] sticky top-0 ">
 				<WorksPos />
 				<WorksTechpal start={start_2} stop={stop_2} />
+				<ChatXpert start={start_3} stop={stop_3} />
 			</div>
 
 			<div
@@ -77,6 +80,10 @@ const Works: React.FC = () => {
 			></div>
 			<div
 				ref={ref_2}
+				className="ref-div-1 h-[50vh] sticky top-0 -z-10"
+			></div>
+			<div
+				ref={ref_3}
 				className="ref-div-1 h-[50vh] sticky top-0 -z-10"
 			></div>
 			<div className="SPACER h-[50vh] w-full "></div>

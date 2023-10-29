@@ -1,23 +1,17 @@
 import Image from 'next/image';
 import { motion, useTransform, useViewportScroll } from 'framer-motion';
 
-import projectImg from '../../public/assets/tp.gif';
-// import loading from '../../public/assets/loading.webp';
-
-import github from '../../public/assets/github_black.svg';
+import projectImg from '../../public/assets/pos_pic.png';
 import web from '../../public/assets/web.svg';
 
 type props = {
-  //   pRef: MutableRefObject<HTMLDivElement>;
   start: number;
   stop: number;
 }
 
-const WorksTechpal: React.FC<props> = ({ start, stop }: props) => {
+const ChatXpert: React.FC<props> = ({ start, stop }: props) => {
 	const { scrollYProgress } = useViewportScroll();
-	//   const [elRef, start, stop] = useRefScrollProgress();
 	const yPosAnim = useTransform(scrollYProgress, [start, stop], [2000, 0]);
-	// const yPosAnimUp = useTransform(scrollYProgress, [start, stop], [-2000, 0]);
 	const opacityAnim = useTransform(scrollYProgress, [start, stop], [-1, 1]);
 	const zindexer = useTransform(scrollYProgress, [start, stop], [-1, 1]);
 
@@ -31,26 +25,25 @@ const WorksTechpal: React.FC<props> = ({ start, stop }: props) => {
 			<motion.div
 				className="left bg-black flex items-center px-32 relative"
 				style={{
-					// y: yPosAnimUp,
 					opacity: opacityAnim,
 				}}
 			>
-				<p className="text-4xl font-bold absolute top-10 left-10">02</p>
+				<p className="text-4xl font-bold absolute top-10 left-10">03</p>
 
 				<div className="content-container flex flex-col gap-4 ">
-					<h2 className="project-heading text-7xl font-bold mb-10">Techpal</h2>
+					<h2 className="project-heading text-7xl font-bold mb-10">POS and Inventory</h2>
 					<p className="role-heading text-3xl font-medium">
-            Front End Developer
+            FullStack Developer
 					</p>
 					<p className="project-description text-2xl break-words ">
-            An ecommerce website built with NextJS for a computer retail store.
-            with a custom CRM and multiple payment API integration
+					An electron desktop app that serves as a POS. Tracks store metrics
+            and provides data driven insight on your store.
 					</p>
 
 					<ul className="mt-10 flex flex-col gap-2">
 						<li className="">
 							<a
-								href="https://github.com/ainderew/"
+								href="https://github.com/ainderew/POSandInventoryManagement"
 								target="_blank"
 								rel="noopener noreferrer"
 								className="flex gap-4 text-xl"
@@ -60,7 +53,7 @@ const WorksTechpal: React.FC<props> = ({ start, stop }: props) => {
 							</a>
 						</li>
 
-						<li className="">
+						{/* <li className="">
 							<a
 								href="https://github.com/ainderew/POSandInventoryManagement"
 								className="flex gap-4 text-xl"
@@ -68,7 +61,7 @@ const WorksTechpal: React.FC<props> = ({ start, stop }: props) => {
 								<Image src={web} width={20} height={20} />
                 https://www.Techpal.store
 							</a>
-						</li>
+						</li> */}
 					</ul>
 				</div>
 				<p className="text-xl font-semibold absolute bottom-10 left-10">
@@ -83,11 +76,11 @@ const WorksTechpal: React.FC<props> = ({ start, stop }: props) => {
 				}}
 			>
 				<div className="w-full max-w-[950px] h-1/2 max-h-[531px] relative">
-					<Image src={projectImg} layout="fill" placeholder="blur" blurDataURL="/assets/loading.webp" />
+					<Image src={projectImg} layout="fill" objectFit='contain' placeholder="blur" blurDataURL="/assets/loading.webp" />
 				</div>
 			</motion.div>
 		</motion.div>
 	);
 };
 
-export default WorksTechpal;
+export default ChatXpert;

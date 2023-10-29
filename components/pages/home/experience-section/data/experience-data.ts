@@ -1,9 +1,11 @@
-export const experiences = {
+import { experienceObject } from "../../../../../core/types/base";
+
+export const experiences:experienceObject = {
 	theoria: {
-		position: 'Fullstack Web Developer',
-		duration: 'June 2022 - Present',
+		position: ['Technical Lead', 'Fullstack Web Developer'],
+		duration: ['Aug 2023 - Present','June 2022 - Aug 2023',],
 		employer: 'Theoria Medical',
-		link: 'https://www.theoriamedical.com',
+		link: 'https://www.linkedin.com/company/theoria-medical',
 		responsibilities: [
 			'Designed notification and push notification system for 3 platforms namely for web, desktop and mobile that was integral for the project\'s success.',
 			'Took part in in-depth planning and discussions in weekly sprint planning, finding ways to better streamline and make workflows more efficient by eliminating repetitive blockers.',
@@ -12,7 +14,7 @@ export const experiences = {
 		],
 		techstack: ['Typescript', 'ReactJS', 'NextJS', 'TypeGraphQL', 'NodeJS', 'MongoDB'],
 	},
-	freelance: {
+	group61: {
 		position: 'Fullstack Web Developer',
 		duration: 'Sep 2020 - Feb 2021',
 		employer: 'Upwork',
@@ -32,7 +34,7 @@ export const jobList = [
 		experienceKey: 'theoria',
 	},
 	{
-		name: 'Freelance',
-		experienceKey: 'freelance',
+		name: 'Group61',
+		experienceKey: 'group61',
 	},
 ];
