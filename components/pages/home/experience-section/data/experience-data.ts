@@ -23,9 +23,9 @@ export const experiences: experienceObject = {
   },
   group61: {
     position: "Fullstack Web Developer",
-    duration: "Sep 2020 - Feb 2021",
-    employer: "Upwork",
-    link: "https://upwork.com",
+    duration: "Sep 2020 - June 2021",
+    employer: "Group 61",
+    link: "https://group61.com",
     responsibilities: [
       "Communicated with stakeholders directly to integrate demands into technical plans",
       "Designed Restful APIs to handle automation of student enrollment",
