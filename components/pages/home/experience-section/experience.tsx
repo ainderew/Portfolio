@@ -1,11 +1,11 @@
-import { useState } from "react";
-import { motion, useViewportScroll, useTransform } from "framer-motion";
-import { useRefScrollProgress } from "../../../../hooks/scrollObserver";
-import { ExperienceDetails } from "./components/experience-details";
-import ExperienceList from "./components/experience-list";
+import { useState } from 'react';
+import { motion, useViewportScroll, useTransform } from 'framer-motion';
+import { useRefScrollProgress } from '../../../../hooks/scrollObserver';
+import { ExperienceDetails } from './components/experience-details';
+import ExperienceList from './components/experience-list';
 
-import { experiences, jobList } from "./data/experience-data";
-import { experienceObject } from "../../../../core/types/base";
+import { experiences, jobList } from './data/experience-data';
+import { experienceObject } from '../../../../core/types/base';
 
 const Experience: React.FC = () => {
   const data: experienceObject = experiences;
@@ -24,7 +24,7 @@ const Experience: React.FC = () => {
     [0, 1],
   );
 
-  const DEFAULT_KEY = "theoria";
+  const DEFAULT_KEY = 'theoria';
   const [experienceKey, setExperienceKey] = useState<string>(DEFAULT_KEY);
 
   const handleExperienceClick = (key: string) => {
@@ -78,9 +78,9 @@ const Experience: React.FC = () => {
         </div>
         <div
           style={{
-            background: "#333333",
+            background: '#333333',
             boxShadow:
-              "inset 20px 20px 60px #2c2c2c inset -20px -20px 60px #3a3a3a",
+              'inset 20px 20px 60px #2c2c2c inset -20px -20px 60px #3a3a3a',
           }}
           className="right-col w-[90%] xl:w-full p-5 xl:p-14 xl:h-[40rem] h-auto overflow-auto"
         >
