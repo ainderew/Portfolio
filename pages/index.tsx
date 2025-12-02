@@ -12,6 +12,7 @@ import AboutMeBanner from '../components/about-me-banner';
 import Works from '../components/works';
 import Contact from '../components/contact';
 import WorkMobile from '../components/work-mobile';
+// import ProjectSection from '../components/pages/home/projects';
 
 const Home: NextPage = () => {
   const workRef = useRef<HTMLDivElement>(null);
@@ -63,6 +64,7 @@ const Home: NextPage = () => {
       <Works />
       <WorkMobile />
       <div className="spacer w-full h-[30vh] relative bg-black z-10"></div>
+      {/* <ProjectSection /> */}
       <Contact contactRef={contactRef} />
     </div>
   );
