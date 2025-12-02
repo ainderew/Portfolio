@@ -8,10 +8,10 @@ import Image from 'next/image';
 import ChatXpert from './works/ai';
 
 const Works: React.FC = () => {
-	const { scrollYProgress } = useViewportScroll();
-	const [ref_text, start, stop] = useRefScrollProgress();
+  const { scrollYProgress } = useViewportScroll();
+  const [ref_text, start, stop] = useRefScrollProgress();
 
-	{/*  eslint-disable */}
+  {/*  eslint-disable */}
 	const [ref_1, start_1, stop_1] = useRefScrollProgress();
 	const [ref_2, start_2, stop_2] = useRefScrollProgress();
 	const [ref_3, start_3, stop_3] = useRefScrollProgress();

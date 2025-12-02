@@ -1,8 +1,8 @@
-import Image from "next/image";
-import { motion, useTransform, useViewportScroll } from "framer-motion";
-import { useRefScrollProgress } from "../../hooks/scrollObserver";
+import Image from 'next/image';
+import { motion, useTransform, useViewportScroll } from 'framer-motion';
+import { useRefScrollProgress } from '../../hooks/scrollObserver';
 
-import web from "../../public/assets/web.svg";
+import web from '../../public/assets/web.svg';
 
 const WorksPos: React.FC = () => {
   const { scrollYProgress } = useViewportScroll();
@@ -29,7 +29,7 @@ const WorksPos: React.FC = () => {
           opacity: opacityAnim,
         }}
         transition={{
-          ease: "easeIn",
+          ease: 'easeIn',
         }}
         className='left bg-black
 				 flex items-center px-32  relative'
@@ -64,7 +64,7 @@ const WorksPos: React.FC = () => {
               <a
                 href='https://bramk.tech'
                 className='flex gap-4 text-xl'
-								target="_blank"
+                target="_blank" rel="noreferrer"
               >
                 <Image src={web} width={20} height={20} />
                 https://bramk.tech
