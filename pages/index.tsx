@@ -12,7 +12,6 @@ import AboutMeBanner from '../components/about-me-banner';
 import Works from '../components/works';
 import Contact from '../components/contact';
 import WorkMobile from '../components/work-mobile';
-import ProjectSection from '../components/pages/home/projects';
 
 const Home: NextPage = () => {
   const workRef = useRef<HTMLDivElement>(null);
@@ -38,12 +37,12 @@ const Home: NextPage = () => {
   };
 
   return (
-    <div className='main h-full w-full relative exp'>
+    <div className="main h-full w-full relative exp">
       <motion.div
         variants={staggerContainer}
-        initial='initial'
-        animate='animate'
-        className='stagger-wrapper first-page'
+        initial="initial"
+        animate="animate"
+        className="stagger-wrapper first-page"
       >
         <WebNav
           scrollToWork={scrollToWork}
@@ -56,15 +55,14 @@ const Home: NextPage = () => {
 
       <Experience />
 
-      <div className='first-stick-container h-full sticky top-0'>
+      <div className="first-stick-container h-full sticky top-0">
         <AboutMeBanner aboutRef={aboutRef} />
         <AboutMe />
       </div>
-      <div ref={workRef} className='w-0 h-0'></div>
+      <div ref={workRef} className="w-0 h-0"></div>
       <Works />
       <WorkMobile />
-      <div className='spacer w-full h-[30vh] relative bg-black z-10'></div>
-      <ProjectSection />
+      <div className="spacer w-full h-[30vh] relative bg-black z-10"></div>
       <Contact contactRef={contactRef} />
     </div>
   );
