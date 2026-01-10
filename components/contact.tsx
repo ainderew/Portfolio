@@ -1,92 +1,81 @@
 import { RefObject } from 'react';
 import { motion } from 'framer-motion';
-import { staggerContainer } from '../framer-animation/variants';
+import { staggerContainer, fadeIn } from '../framer-animation/variants';
+import Magnetic from './magnetic';
 
-interface props {
+interface Props {
   contactRef: RefObject<HTMLDivElement>;
 }
 
-const Contact: React.FC<props> = ({ contactRef }: props) => {
+const Contact: React.FC<Props> = ({ contactRef }) => {
   const openMail = () => {
     window.open('mailto:andrewapinon@gmail.com?subject=Inquiry');
   };
+
   return (
-    <motion.div
-      ref={contactRef}
-      variants={staggerContainer}
-      className="w-full h-screen bg-black z-10 relative"
+    <section 
+      ref={contactRef} 
+      className="relative w-full h-screen bg-[#0a0a0a] flex items-center justify-center"
     >
-      <div className="w-[90%] h-full flex flex-col gap-4 justify-center items-center mx-auto bg-black z-20">
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-[0.02]">
+        <h2 className="text-[30vw] font-black uppercase leading-none">
+          Contact
+        </h2>
+      </div>
+
+      <motion.div
+        variants={staggerContainer}
+        initial="initial"
+        whileInView="animate"
+        viewport={{ once: true }}
+        className="relative z-10 w-[90%] max-w-4xl flex flex-col items-center text-center gap-8"
+      >
         <motion.p
-          initial={{
-            opacity: 0,
-            y: 40,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-            transition: {
-              delay: 0.3,
-            },
-          }}
-          className="text-accent text-2xl"
+          variants={fadeIn('up')}
+          className="text-accent font-bold text-lg uppercase tracking-[0.4em]"
         >
           Get in touch
         </motion.p>
-        <motion.p
-          initial={{
-            opacity: 0,
-            y: 40,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-            transition: {
-              delay: 0.3,
-            },
-          }}
-          className="text-5xl font-semibold"
+        
+        <motion.h2
+          variants={fadeIn('up')}
+          className="text-6xl xl:text-9xl font-black tracking-tighter"
         >
-          Let&apos;s Talk It Out
-        </motion.p>
+          Let&apos;s build something <span className="text-accent">great.</span>
+        </motion.h2>
+
         <motion.p
-          initial={{
-            opacity: 0,
-            y: 40,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-            transition: {
-              delay: 0.3,
-            },
-          }}
-          className="break-words xl:w-[30%] text-center"
+          variants={fadeIn('up')}
+          className="text-white/60 text-xl xl:text-2xl max-w-2xl leading-relaxed"
         >
-          I&apos;m very eager to hear and work with you so we can execute on your
-          ideas. My email is open for those looking to implement technology
-          driven strategies and ideas into reality.
+          Currently open for new opportunities and interesting projects. 
+          Whether you have a question or just want to say hi, my inbox 
+          is always open.
         </motion.p>
 
-        <motion.button
-          initial={{
-            opacity: 0,
-            y: 40,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-            transition: {
-              delay: 0.3,
-            },
-          }}
-          onClick={openMail}
-          className="border-2 border-accent text-accent font-medium px-7 py-3 mt-8"
-        >
-          Say Hello
-        </motion.button>
-      </div>
-    </motion.div>
+        <motion.div variants={fadeIn('up')} className="mt-8">
+          <Magnetic>
+            <button
+              onClick={openMail}
+              className="relative group px-12 py-6 bg-white text-black font-black text-xl uppercase tracking-widest overflow-hidden transition-transform duration-300 hover:scale-110"
+            >
+              <span className="relative z-10">Send a Message</span>
+              <div className="absolute inset-0 bg-accent transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[0.76,0,0.24,1]" />
+            </button>
+          </Magnetic>
+        </motion.div>
+
+        <div className="mt-20 flex gap-8">
+          {['LinkedIn', 'Github', 'Twitter'].map((social) => (
+            <Magnetic key={social}>
+              <a href="#" className="text-white/40 hover:text-white transition-colors font-bold uppercase text-xs tracking-widest">
+                {social}
+              </a>
+            </Magnetic>
+          ))}
+        </div>
+      </motion.div>
+    </section>
   );
 };
 

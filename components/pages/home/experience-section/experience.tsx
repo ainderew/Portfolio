@@ -1,93 +1,103 @@
 import { useState } from 'react';
-import { motion, useViewportScroll, useTransform } from 'framer-motion';
+import { motion, useViewportScroll, useTransform, useSpring } from 'framer-motion';
 import { useRefScrollProgress } from '../../../../hooks/scrollObserver';
 import { ExperienceDetails } from './components/experience-details';
 import ExperienceList from './components/experience-list';
-
 import { experiences, jobList } from './data/experience-data';
 import { experienceObject } from '../../../../core/types/base';
 
 const Experience: React.FC = () => {
   const data: experienceObject = experiences;
-
   const { scrollYProgress } = useViewportScroll();
   const [ref_text, start, stop] = useRefScrollProgress();
 
-  const xTextAnim = useTransform(
+  const xTransform = useTransform(
     scrollYProgress,
-    [start - 0.8, stop],
-    [-800, 0],
+    [start - 0.5, stop + 0.5],
+    [400, -400]
   );
-  const opacityAnim = useTransform(
-    scrollYProgress,
-    [start - 0.1, stop],
-    [0, 1],
-  );
+  
+  const xTextAnim = useSpring(xTransform, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
 
-  const DEFAULT_KEY = 'theoria';
-  const [experienceKey, setExperienceKey] = useState<string>(DEFAULT_KEY);
+  const [experienceKey, setExperienceKey] = useState<string>('theoria');
 
   const handleExperienceClick = (key: string) => {
     setExperienceKey(key);
   };
 
   return (
-    <div className="experience-container w-full h-screen flex flex-col items-center">
-      <div className="w-[90%] xl:w-[70%] max-w-[1344px]">
+    <section className="relative w-full min-h-screen py-20 flex flex-col items-center">
+      <motion.div
+        style={{ x: xTextAnim }}
+        className="absolute top-20 left-0 whitespace-nowrap pointer-events-none opacity-[0.03] select-none"
+      >
+        <h2 className="text-[20vw] font-black uppercase leading-none">
+          Experience Experience Experience
+        </h2>
+      </motion.div>
+
+      <div className="w-[90%] xl:w-[70%] max-w-[1344px] z-10">
         <div
           ref={ref_text}
-          className="h-[20vh] xl:h-[30vh] w-[100%] flex justify-between items-center relative"
+          className="mb-20 flex flex-col xl:flex-row justify-between items-start xl:items-end gap-4"
         >
-          <p className="text-base xl:text-3xl font-semibold text-accent">
-            Industry Experience
-          </p>
-          <motion.p
-            style={{
-              x: xTextAnim,
-              opacity: opacityAnim,
-            }}
-            className="text-2xl xl:text-6xl 2xl:text-8xl font-bold text-[#b9b9b9]"
-          >
-            MY EXPERIENCE
-          </motion.p>
+          <div className="space-y-2">
+            <motion.p 
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-sm xl:text-lg font-bold text-accent uppercase tracking-[0.3em]"
+            >
+              Career Path
+            </motion.p>
+            <motion.h3 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+              className="text-4xl xl:text-7xl font-bold"
+            >
+              Work History.
+            </motion.h3>
+          </div>
         </div>
-      </div>
 
-      <div className="job-table w-full xl:w-[70%] max-w-[1344px] h-full grid grid-cols-1 gap-2 xl:gap-10 xl:grid-cols-[1fr_2fr] mx-0 grid-rows-[10vh_1fr] xl:grid-rows-1 justify-items-center">
-        <div className="left-col xl:w-full w-[100vw]">
-          <ul className="flex xl:flex-col">
-            {jobList.map((el) => {
-              return (
-                <div className="list-container relative" key={el.experienceKey}>
-                  <ExperienceList
-                    label={el.name}
-                    experienceKey={el.experienceKey}
-                    active={experienceKey === el.experienceKey ? true : false}
-                    clickHandler={handleExperienceClick}
+        <div className="grid grid-cols-1 xl:grid-cols-[250px_1fr] gap-10 xl:gap-20">
+          <div className="flex flex-col gap-2">
+            {jobList.map((el) => (
+              <div className="relative group" key={el.experienceKey}>
+                <ExperienceList
+                  label={el.name}
+                  experienceKey={el.experienceKey}
+                  active={experienceKey === el.experienceKey}
+                  clickHandler={handleExperienceClick}
+                />
+                {experienceKey === el.experienceKey && (
+                  <motion.div
+                    layoutId="active-job-indicator"
+                    className="absolute left-0 xl:-left-4 top-0 bottom-0 w-[4px] bg-accent"
+                    transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                   />
-                  {experienceKey === el.experienceKey ? (
-                    <motion.div
-                      className="line z-10 absolute bottom-0 right-0 left-0 w-full xl:w-[5px] h-[5px] xl:h-full bg-accent"
-                      layoutId="line"
-                    />
-                  ) : null}
-                </div>
-              );
-            })}
-          </ul>
-        </div>
-        <div
-          style={{
-            background: '#333333',
-            boxShadow:
-              'inset 20px 20px 60px #2c2c2c inset -20px -20px 60px #3a3a3a',
-          }}
-          className="right-col w-[90%] xl:w-full p-5 xl:p-14 xl:h-[40rem] h-auto overflow-auto"
-        >
-          <ExperienceDetails data={data[experienceKey]} />
+                )}
+              </div>
+            ))}
+          </div>
+
+          <motion.div
+            key={experienceKey}
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] }}
+            className="bg-white/5 backdrop-blur-sm border border-white/10 p-8 xl:p-16 rounded-2xl shadow-2xl"
+          >
+            <ExperienceDetails data={data[experienceKey]} />
+          </motion.div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -9,12 +9,12 @@ import { motion } from 'framer-motion';
 import { staggerContainer } from '../framer-animation/variants';
 import SocialWidget from '../components/social-widget';
 import AboutMeBanner from '../components/about-me-banner';
-import Works from '../components/works';
 import Contact from '../components/contact';
+import HorizontalProjects from '../components/horizontal-projects';
 import WorkMobile from '../components/work-mobile';
-// import ProjectSection from '../components/pages/home/projects';
 
 const Home: NextPage = () => {
+
   const workRef = useRef<HTMLDivElement>(null);
   const contactRef = useRef<HTMLDivElement>(null);
   const aboutRef = useRef<HTMLDivElement>(null);
@@ -38,7 +38,7 @@ const Home: NextPage = () => {
   };
 
   return (
-    <div className="main h-full w-full relative exp">
+    <div className="relative w-full">
       <motion.div
         variants={staggerContainer}
         initial="initial"
@@ -56,15 +56,14 @@ const Home: NextPage = () => {
 
       <Experience />
 
-      <div className="first-stick-container h-full sticky top-0">
+      <div className="relative">
         <AboutMeBanner aboutRef={aboutRef} />
         <AboutMe />
       </div>
-      <div ref={workRef} className="w-0 h-0"></div>
-      <Works />
+
+      <div ref={workRef} className="w-full h-px" />
+      <HorizontalProjects />
       <WorkMobile />
-      <div className="spacer w-full h-[30vh] relative bg-black z-10"></div>
-      {/* <ProjectSection /> */}
       <Contact contactRef={contactRef} />
     </div>
   );

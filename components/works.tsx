@@ -1,94 +1,81 @@
-import { motion, useViewportScroll, useTransform } from 'framer-motion';
+import React from 'react';
+import { motion, useTransform, useViewportScroll, useSpring } from 'framer-motion';
+import { projects } from '../core/data/projects';
+import ProjectCard from './pages/home/projects/project-card';
 import { useRefScrollProgress } from '../hooks/scrollObserver';
-import WorksPos from './works/pos';
-import WorksTechpal from './works/techpal';
-
-import arrowDown from '../public/assets/arrow_down.svg';
-import Image from 'next/image';
-import ChatXpert from './works/ai';
 
 const Works: React.FC = () => {
+  const [containerRef, start, end] = useRefScrollProgress();
   const { scrollYProgress } = useViewportScroll();
-  const [ref_text, start, stop] = useRefScrollProgress();
 
-  {/*  eslint-disable */}
-	const [ref_1, start_1, stop_1] = useRefScrollProgress();
-	const [ref_2, start_2, stop_2] = useRefScrollProgress();
-	const [ref_3, start_3, stop_3] = useRefScrollProgress();
+  const totalProjects = projects.length;
+  const cardWidth = 100;
+  const totalWidth = totalProjects * cardWidth;
 
-	const xTextAnim = useTransform(
-		scrollYProgress,
-		[start - 0.8, stop],
-		[-2000, 0]
-	);
-	const opacityAnim = useTransform(
-		scrollYProgress,
-		[start - 0.1, stop],
-		[0, 1]
-	);
+  const targetX = -(totalWidth - 100);
 
-	return (
-		<div className="w-full h-[270vh] min-h-screen bg-black relative hidden xl:flex flex-col items-center z-20">
-			<div
-				ref={ref_text}
-				className="h-[30vh] w-[70%] max-w-[1344px] flex justify-between items-center bordder-2 border-black relative"
-			>
-				<p className="text-lg xl:text-3xl font-semibold text-accent">
-          My Recent Projects
-				</p>
-				<motion.p
-					style={{
-						x: xTextAnim,
-						opacity: opacityAnim,
-					}}
-					className="text-4xl xl:text-6xl 2xl:text-8xl font-bold text-[#b9b9b9]"
-				>
-          MY PROJECTS
-				</motion.p>
-				<div className="absolute -bottom-[60vh] left-1/2 -translate-x-1/2 flex items-center gap-2">
-					<p className="font-medium text-[#b9b9b9]">Scroll Down</p>
-					<motion.div
-						initial={{
-							y: -10,
-						}}
-						animate={{
-							y: 10,
-						}}
-            
-						transition={{
-							repeat: Infinity,
-							repeatType: 'reverse',
-							duration:1,
-							ease: 'easeInOut',
-						}}
-						className=""
-					>
-						<Image src={arrowDown} width={20} alt="" className="" />
-					</motion.div>
-				</div>
-			</div>
+  const safeStart = start || 0;
+  const safeEnd = end ||1;
 
-			<div className=" w-full max-w-[1920px] h-[100vh] sticky top-0 ">
-				<WorksPos />
-				<WorksTechpal start={start_2} stop={stop_2} />
-				<ChatXpert start={start_3} stop={stop_3} />
-			</div>
+  const xTranslate = useTransform(
+    scrollYProgress,
+    [safeStart, safeEnd],
+    ['0vw', targetX + 'vw']
+  );
 
-			<div
-				ref={ref_1}
-				className="ref-div-1 h-[50vh] sticky top-0 -z-10"
-			></div>
-			<div
-				ref={ref_2}
-				className="ref-div-1 h-[50vh] sticky top-0 -z-10"
-			></div>
-			<div
-				ref={ref_3}
-				className="ref-div-1 h-[50vh] sticky top-0 -z-10"
-			></div>
-			<div className="SPACER h-[50vh] w-full "></div>
-		</div>
-	);
+  const xSpring = useSpring(xTranslate, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
+
+  const localProgress = useTransform(scrollYProgress, [safeStart, safeEnd], [0, 1]);
+
+  return (
+    <section 
+      ref={containerRef} 
+      className="relative w-full bg-[#0a0a0a] hidden xl:block"
+      style={{ height: `${totalProjects * 200}vh` }}
+    >
+      <div className="sticky top-0 h-screen w-full flex items-center overflow-hidden z-[5]">
+        <div className="absolute top-10 left-10 z-10 pointer-events-none opacity-[0.05]">
+          <h2 className="text-[20vw] font-black uppercase leading-none tracking-tighter">
+            Portfolio
+          </h2>
+        </div>
+
+        <motion.div 
+          style={{ x: xSpring }}
+          className="flex h-full"
+        >
+          {projects.map((project, index) => (
+            <ProjectCard 
+              key={project.id} 
+              project={project} 
+              index={index} 
+              total={totalProjects}
+              progress={localProgress}
+              targetX={targetX}
+            />
+          ))}
+        </motion.div>
+
+
+        <div className="absolute bottom-10 left-10 right-10 h-px bg-white/10 z-20">
+          <motion.div 
+            style={{ scaleX: localProgress, originX: 0 }}
+            className="w-full h-full bg-accent"
+          />
+          <div className="absolute top-4 left-0 text-[10px] font-black tracking-widest text-white/20 uppercase">
+            Scroll to Navigate
+          </div>
+          <div className="absolute top-4 right-0 text-[10px] font-black tracking-widest text-white/20 uppercase">
+            {totalProjects} Projects Total
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default Works;

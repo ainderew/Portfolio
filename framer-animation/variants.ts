@@ -1,57 +1,67 @@
 import { Variants } from 'framer-motion';
 
+export const transition = { duration: 1, ease: [0.76, 0, 0.24, 1] };
+
 export const fadeIn = (direction: 'up' | 'down'): Variants => {
 	return {
 		initial: {
-			y: direction === 'up' ? 40 : -60,
+			y: direction === 'up' ? 60 : -60,
 			opacity: 0,
 		},
 		animate: {
 			y: 0,
 			opacity: 1,
 			transition: {
-				duration: 0.3,
-				ease: 'easeInOut',
+				duration: 0.8,
+				ease: [0.6, 0.05, -0.01, 0.9],
 			},
 		},
 	};
 };
 
-export const fadeOut: Variants = {
-	initial:{
-		opacity: 1,
-		y:0,
+export const wordReveal: Variants = {
+	initial: {
+		y: '100%',
 	},
-	animate:{
-		opacity: 0,
-		y:40,
-	}
+	animate: {
+		y: 0,
+		transition: {
+			duration: 1,
+			ease: [0.76, 0, 0.24, 1],
+		},
+	},
+};
+
+export const staggerContainer: Variants = {
+	initial: {},
+	animate: {
+		transition: {
+			staggerChildren: 0.1,
+			delayChildren: 0.3,
+		},
+	},
 };
 
 export const works: Variants = {
-	initial:{
-		
-		y: 1000,
-		opacity: 0
+	initial: {
+		y: 20,
+		opacity: 0,
 	},
 	animate: {
-		// zIndex: 1,
 		y: 0,
 		opacity: 1,
-		transition:{
-			delay: .2,
-			duration: .2,
-			bounce: 0,
-		}
+		transition: {
+			duration: 0.5,
+			ease: [0.76, 0, 0.24, 1],
+		},
 	},
 	exit: {
-		// zIndex: 0,
-		y:  -1000,
+		y: -20,
 		opacity: 0,
-		transition:{
-			duration: .2,
-		}
-	}
+		transition: {
+			duration: 0.3,
+		},
+	},
 };
 
 export const scaleLine: Variants = {
@@ -62,16 +72,8 @@ export const scaleLine: Variants = {
 	animate: {
 		scaleY: 1,
 		transition: {
-			duration: .3,
-			ease: 'easeIn'
-		},
-	},
-};
-export const staggerContainer: Variants = {
-	initial: {},
-	animate: {
-		transition: {
-			staggerChildren: 0.1,
+			duration: 0.3,
+			ease: 'easeIn',
 		},
 	},
 };
