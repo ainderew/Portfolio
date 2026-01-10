@@ -42,10 +42,16 @@ const HorizontalProjects: React.FC = () => {
       let progress = (scrollTop - containerTop) / scrollRange;
       progress = Math.max(0, Math.min(1, progress));
 
-      const horizontalX = -(progress * (projects.length - 1) * 100);
+      const startBuffer = 0.15;
+      let effectiveProgress = 0;
+      if (progress > startBuffer) {
+        effectiveProgress = (progress - startBuffer) / (1 - startBuffer);
+      }
+
+      const horizontalX = -(effectiveProgress * (projects.length - 1) * 100);
       setX(horizontalX);
-      setLocalProgress(progress);
-      setBgX(-progress * 50);
+      setLocalProgress(effectiveProgress);
+      setBgX(-effectiveProgress * 50);
     };
 
     calculateOffset();

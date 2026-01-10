@@ -12,6 +12,7 @@ import AboutMeBanner from '../components/about-me-banner';
 import Contact from '../components/contact';
 import HorizontalProjects from '../components/horizontal-projects';
 import WorkMobile from '../components/work-mobile';
+import Intro from '../components/intro';
 
 const Home: NextPage = () => {
 
@@ -39,6 +40,7 @@ const Home: NextPage = () => {
 
   return (
     <div className="relative w-full">
+      <Intro />
       <motion.div
         variants={staggerContainer}
         initial="initial"
