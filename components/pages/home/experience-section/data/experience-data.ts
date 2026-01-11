@@ -2,15 +2,18 @@ import { experienceObject } from '../../../../../core/types/base';
 
 export const experiences: experienceObject = {
   theoria: {
-    position: ['Senior Fullstack Developer', 'Fullstack Web Developer'],
-    duration: ['Aug 2023 - Present', 'June 2022 - Aug 2023'],
+    position: ['Senior Full Stack Developer', 'Full Stack Developer'],
+    duration: ['Aug 2023 – Present', 'Jun 2022 – Aug 2023'],
     employer: 'Theoria Medical',
     link: 'https://www.linkedin.com/company/theoria-medical',
     responsibilities: [
-      'Designed notification and push notification system for 3 platforms namely for web, desktop and mobile that was integral for the project\'s success.',
-      'Took part in in-depth planning and discussions in weekly sprint planning, finding ways to better streamline and make workflows more efficient by eliminating repetitive blockers.',
-      'Implemented core app features through Typescript GraphQL backend and resolving application bugs.',
-      'Collaborated in a 5-member team to create the company\'s second product that integrates with its main product',
+      'Spearheaded the adoption of End-to-end testing and automated CI/CD pipelines for a 3-man team, reducing production deployment errors and establishing a culture of peer code reviews.',
+      'Collaborated with a senior engineering team to execute a massive infrastructure optimization of our medical platform; leveraged Microsoft Azure Application Insights to identify application bloat, successfully consolidating the environment from 90 servers (VMs) down to 10.',
+      'Automated our application uptime monitoring and logging workflow and integrated it into our Slack workplace to provide 100% notification coverage related to our outages and improve response time.',
+      'Redesigned the syncing process of our applications to use a currently available service, which resulted in 100+ hours of manual labor saved each week.',
+      'Collaborated in a 5-member team to build a product from the ground up that integrated with a collaborating team\'s existing product.',
+      'Optimized codebase by finding major code errors and code smells, one of which caused hundreds of thousands of duplicate documents in our MongoDB database.',
+      'Developed the entire notification and push notification system for a messaging application that integrated with the main service we provided.',
     ],
     techstack: [
       'Typescript',
