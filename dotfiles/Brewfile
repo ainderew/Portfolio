@@ -1,0 +1,27 @@
+# Brew bundle for workstation setup
+
+# Core
+brew "git"
+brew "ripgrep"
+brew "fzf"
+brew "bat"
+brew "zoxide"
+brew "tmux"
+brew "neovim"
+brew "starship"
+
+# Node
+brew "fnm"
+
+# Fonts
+cask "font-jetbrains-mono"
+
+# Terminal + utilities
+cask "iterm2"
+
+# Optional dev tools (uncomment as needed)
+# brew "gh"
+# brew "jq"
+# brew "wget"
+# cask "raycast"
+# cask "google-chrome"
