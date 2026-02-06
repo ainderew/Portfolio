@@ -11,13 +11,14 @@ brew "neovim"
 brew "starship"
 
 # Node
-brew "fnm"
+brew "nvm"
 
 # Fonts
 cask "font-jetbrains-mono"
 
 # Terminal + utilities
 cask "iterm2"
+cask "obsidian"
 
 # Optional dev tools (uncomment as needed)
 # brew "gh"

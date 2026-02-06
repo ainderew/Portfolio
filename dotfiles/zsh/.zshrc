@@ -50,3 +50,4 @@ source ~/.orbstack/shell/init.zsh 2>/dev/null || :
 
 # Local secrets (not tracked)
 [[ -f "$HOME/.zshrc.secrets" ]] && source "$HOME/.zshrc.secrets"
+export PATH="$HOME/.local/bin:$PATH"
