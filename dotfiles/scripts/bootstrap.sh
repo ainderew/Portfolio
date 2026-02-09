@@ -125,15 +125,21 @@ if [ "${SKIP_DEFAULTS:-0}" = "0" ] && [ -f "$DOTFILES_DIR/scripts/macos-defaults
 fi
 
 # 5) iTerm2 config
-# Tell iTerm2 to use the custom folder for preferences
-defaults write com.googlecode.iterm2 PrefsCustomFolder -string "$DOTFILES_DIR/iterm"
-# Tell iTerm2 to load the preferences from the custom folder
-defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
+ITERM_PLIST="$DOTFILES_DIR/iterm/com.googlecode.iterm2.plist"
+if [ -f "$ITERM_PLIST" ]; then
+  echo "Applying iTerm2 configuration from $ITERM_PLIST..."
+  # Tell iTerm2 to use the custom folder for preferences
+  defaults write com.googlecode.iterm2 PrefsCustomFolder -string "$DOTFILES_DIR/iterm"
+  # Tell iTerm2 to load the preferences from the custom folder
+  defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
+else
+  echo "No iTerm2 configuration found in repo ($ITERM_PLIST)."
+  echo "Skipping iTerm2 preference loading to avoid errors."
+  echo "To sync your settings: iTerm2 > Prefs > General > Prefs > Save settings to folder: $DOTFILES_DIR/iterm"
+fi
 
 cat <<'MSG'
 Done.
 - Open a new terminal session to pick up changes.
 - Fill in ~/.zshrc.secrets with your keys.
-- iTerm2 is now configured to load preferences from ~/.dotfiles/iterm.
-  - To sync your current profile, save it there or configure iTerm2 > Preferences > General > Preferences > Load preferences from a custom folder.
 MSG
