@@ -104,8 +104,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, progress }) => {
               <div className="relative w-full h-full">
                 <Image
                   src={project.image}
-                  layout="fill"
-                  objectFit="cover"
+                  fill
+                  style={{ objectFit: 'cover' }}
                   className="grayscale group-hover:grayscale-0 transition-all duration-700"
                   alt={project.title}
                 />

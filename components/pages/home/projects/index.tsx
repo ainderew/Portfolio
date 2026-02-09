@@ -27,8 +27,8 @@ const ProjectSection: React.FC = () => {
               <Image
                 src={'/assets/cover.jpg'}
                 alt="project"
-                objectFit="cover"
-                layout="fill"
+                fill
+                style={{ objectFit: 'cover' }}
                 className="group-hover:scale-[1.1] duration-300"
               />
               <div className="w-full h-1/2 bg-[rgba(0,0,0,0.8)] translate-y-[100%] group-hover:translate-y-0 duration-200 p-4 group-hover:shadow-[0_-5px_15px_5px_rgba(0,0,0,0.3)] flex flex-col gap-8">
@@ -82,8 +82,8 @@ export const ProjectContainer: React.FC<props> = ({
           <Image
             src={`/assets/${image}`}
             alt="project"
-            objectFit="cover"
-            layout="fill"
+            fill
+            style={{ objectFit: 'cover' }}
             className=" duration-300"
           />
           <div className="w-full h-1/2 bg-[rgba(0,0,0,0.8)] translate-y-[100%] delay-0 group-hover:delay-500 group-hover:translate-y-0 duration-200 p-4 group-hover:shadow-[0_-5px_15px_5px_rgba(0,0,0,0.3)] flex flex-col gap-8">

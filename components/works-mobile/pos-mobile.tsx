@@ -75,7 +75,7 @@ const PosMobile: React.FC = () => {
             className="">
             <li className="list-inside list-none">
               <a href="" className="flex items-center gap-4">
-                <Image src={github} alt="" width={20} />
+                <Image src={github} alt="" width={20} height={20} />
                 Github
               </a>
             </li>
@@ -93,7 +93,7 @@ const PosMobile: React.FC = () => {
           className="font-bold">ReactJS - TypeScript - SQL</motion.p>
       </motion.div>
       <div className="flex justify-center items-center sm:p-8">
-        <Image src={projectImg} alt="" className="" />
+        <Image src={projectImg} alt="" className="" width={500} height={500} style={{ width: '100%', height: 'auto' }} />
       </div>
     </div>
   );

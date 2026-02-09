@@ -82,8 +82,8 @@ const Workdash: React.FC<props> = ({ progress, range }) => {
         <div className="w-[80%] h-[60%] relative group rounded-xl overflow-hidden border border-white/10 shadow-2xl">
           <Image
             src={projectImg}
-            layout="fill"
-            objectFit="cover"
+            fill
+            style={{ objectFit: 'cover' }}
             alt="Workdash Preview"
           />
         </div>

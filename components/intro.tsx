@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { useEffect, useState } from 'react';
 
 const Intro = () => {
@@ -20,7 +20,7 @@ const Intro = () => {
 
   if (isAnimationComplete) return null;
 
-  const textVariants = {
+  const textVariants: Variants = {
     hidden: { opacity: 0, width: 0 },
     visible: { 
       opacity: 1, 
@@ -33,7 +33,7 @@ const Intro = () => {
     }
   };
 
-  const initialVariants = {
+  const initialVariants: Variants = {
     hidden: { opacity: 0 },
     visible: { 
       opacity: 1,

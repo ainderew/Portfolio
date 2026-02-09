@@ -62,8 +62,8 @@ const AboutMe: React.FC = () => {
           <div className="relative h-full w-full grayscale hover:grayscale-0 transition-all duration-700 overflow-hidden">
             <Image
               src={me}
-              layout="fill"
-              objectFit="cover"
+              fill
+              style={{ objectFit: 'cover' }}
               alt="Andrew's picture"
               className="scale-110 group-hover:scale-100 transition-transform duration-700"
             />

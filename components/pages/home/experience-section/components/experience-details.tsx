@@ -18,7 +18,7 @@ export const ExperienceDetails = ({ data }: props) => {
             <h2 className="position-header text-sm xl:text-lg font-semibold">
               <span className="position font-semibold">{pos}</span>
               <span className="duration text-accent font-bold">
-                <a href={link} target="_blalnk" className="" rel="noreferrer">
+                <a href={link} target="_blank" className="" rel="noreferrer">
                   {' '}
                   @{employer}
                 </a>
@@ -37,7 +37,7 @@ export const ExperienceDetails = ({ data }: props) => {
         <h2 className="position-header text-sm xl:text-lg font-semibold">
           <span className="position font-semibold">{position}</span>
           <span className="duration text-accent font-bold">
-            <a href={link} target="_blalnk" className="" rel="noreferrer">
+            <a href={link} target="_blank" className="" rel="noreferrer">
               {' '}
               @{employer}
             </a>

@@ -4,7 +4,7 @@ import { staggerContainer, fadeIn } from '../framer-animation/variants';
 import Magnetic from './magnetic';
 
 interface Props {
-  contactRef: RefObject<HTMLDivElement>;
+  contactRef: RefObject<HTMLDivElement | null>;
 }
 
 const Contact: React.FC<Props> = ({ contactRef }) => {
@@ -66,10 +66,19 @@ const Contact: React.FC<Props> = ({ contactRef }) => {
         </motion.div>
 
         <div className="mt-20 flex gap-8">
-          {['LinkedIn', 'Github', 'Twitter'].map((social) => (
-            <Magnetic key={social}>
-              <a href="#" className="text-white/40 hover:text-white transition-colors font-bold uppercase text-xs tracking-widest">
-                {social}
+          {[
+            { name: 'LinkedIn', url: 'https://www.linkedin.com/in/andrew-pinon-620b4b14a/' },
+            { name: 'Github', url: 'https://www.github.com/ainderew' },
+            { name: 'Twitter', url: 'https://twitter.com/ainderew' }
+          ].map((social) => (
+            <Magnetic key={social.name}>
+              <a 
+                href={social.url} 
+                target="_blank" 
+                rel="noreferrer" 
+                className="text-white/40 hover:text-white transition-colors font-bold uppercase text-xs tracking-widest"
+              >
+                {social.name}
               </a>
             </Magnetic>
           ))}

@@ -2,7 +2,6 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { fadeIn } from '../framer-animation/variants';
 import { useScrollHider } from '../hooks/scrollHide';
-import { useRouter } from 'next/router';
 import Magnetic from './magnetic';
 
 interface Props {
@@ -13,11 +12,6 @@ interface Props {
 
 const WebNav: React.FC<Props> = ({ scrollToWork, scrollToAbout, scrollToContact }) => {
   const classValue = useScrollHider();
-  const router = useRouter();
-
-  const routeHome = () => {
-    router.push('/');
-  };
 
   return (
     <nav
@@ -27,9 +21,12 @@ const WebNav: React.FC<Props> = ({ scrollToWork, scrollToAbout, scrollToContact 
     >
       <motion.div variants={fadeIn('up')} className="logo flex-1">
         <Magnetic>
-          <h2 onClick={routeHome} className="text-3xl font-bold cursor-pointer tracking-tighter hover:text-accent transition-colors">
+          <Link
+            href="/"
+            className="text-3xl font-bold cursor-pointer tracking-tighter hover:text-accent transition-colors"
+          >
             AP.
-          </h2>
+          </Link>
         </Magnetic>
       </motion.div>
 
@@ -48,15 +45,16 @@ const WebNav: React.FC<Props> = ({ scrollToWork, scrollToAbout, scrollToContact 
                 className="relative group"
               >
                 {item.href ? (
-                  <Link href={item.href}>
-                    <a className="text-sm font-medium uppercase tracking-[0.2em] cursor-pointer text-white/70 group-hover:text-white transition-colors">
-                      {item.label}
-                    </a>
+                  <Link
+                    href={item.href}
+                    className="text-sm font-medium uppercase tracking-[0.2em] cursor-pointer text-white/70 group-hover:text-white transition-colors"
+                  >
+                    {item.label}
                   </Link>
                 ) : (
-                  <span className="text-sm font-medium uppercase tracking-[0.2em] cursor-pointer text-white/70 group-hover:text-white transition-colors">
+                  <button onClick={item.action} className="text-sm font-medium uppercase tracking-[0.2em] cursor-pointer text-white/70 group-hover:text-white transition-colors bg-transparent border-none p-0">
                     {item.label}
-                  </span>
+                  </button>
                 )}
                 <span className="absolute -bottom-2 left-0 w-0 h-[2px] bg-accent transition-all duration-300 group-hover:w-full" />
               </motion.li>

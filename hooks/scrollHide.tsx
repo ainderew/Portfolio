@@ -1,33 +1,33 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export const useScrollHider = (): string => {
-  const [scrolledValue, setScrolledValue] = useState<number>(0);
-  const [prevScroll, setPrevScroll] = useState<number>(0);
   const [classValue, setClassValue] = useState<string>("show");
-  const handleScroll = () => {
-    const progress = window.scrollY;
-    setScrolledValue(progress);
-  };
+  const prevScrollY = useRef(0);
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      // Add a small buffer to prevent jitter or hiding at the very top
+      if (currentScrollY < 10) {
+        setClassValue("show");
+      } else if (currentScrollY > prevScrollY.current && currentScrollY > 50) {
+        // Scrolling down & past threshold
+        setClassValue("hide");
+      } else if (currentScrollY < prevScrollY.current) {
+        // Scrolling up
+        setClassValue("show");
+      }
+      
+      prevScrollY.current = currentScrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-
-  useEffect(() => {
-    if (prevScroll < scrolledValue) {
-      //hide
-      setClassValue("hide");
-      setPrevScroll(scrolledValue)
-    } else {
-      //show
-      setClassValue("show");
-      setPrevScroll(scrolledValue)
-    }
-  }, [scrolledValue]);
 
   return classValue;
 };

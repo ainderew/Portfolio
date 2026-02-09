@@ -178,8 +178,8 @@ const HorizontalProjects: React.FC = () => {
                     ) : (
                       <Image
                         src={project.image}
-                        layout="fill"
-                        objectFit="cover"
+                        fill
+                        style={{ objectFit: 'cover' }}
                         alt={project.title}
                         className="opacity-60 group-hover:opacity-100 grayscale group-hover:grayscale-0 transition-all duration-1000"
                       />

@@ -3,7 +3,7 @@ import { motion, useTransform, useViewportScroll } from 'framer-motion';
 import { useRefScrollProgress } from '../hooks/scrollObserver';
 
 interface props {
-  aboutRef: RefObject<HTMLDivElement>;
+  aboutRef: RefObject<HTMLDivElement | null>;
 }
 
 const AboutMeBanner: React.FC<props> = ({ aboutRef }: props) => {

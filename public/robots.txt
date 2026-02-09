@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://andrewpinon.com
+
+# Sitemaps
+Sitemap: https://andrewpinon.com/sitemap.xml

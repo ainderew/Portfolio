@@ -1,4 +1,5 @@
 import React from 'react';
+import Head from 'next/head';
 import Installation from '../components/pages/mysetup/installation';
 import ShowCase from '../components/pages/mysetup/showcase';
 import WebNav from '../components/web-nav';
@@ -6,6 +7,10 @@ import WebNav from '../components/web-nav';
 const MySetup: React.FC = () => {
   return (
     <div className="setup h-full">
+      <Head>
+        <title>My Setup | Andrew Pinon</title>
+        <meta name="description" content="A look at my development environment and desk setup." />
+      </Head>
       <WebNav />
       <div className="min-h-[100vh] py-[10rem] w-full">
         <div className="w-[90%] xl:w-[70%] m-auto flex flex-col justify-center items-center gap-6">

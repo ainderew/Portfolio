@@ -1,5 +1,6 @@
 import { useRef } from 'react';
 import type { NextPage } from 'next';
+import Head from 'next/head';
 import AboutMe from '../components/about-me';
 import Experience from '../components/pages/home/experience-section/experience';
 import Banner from '../components/banner';
@@ -40,6 +41,14 @@ const Home: NextPage = () => {
 
   return (
     <div className="relative w-full">
+      <Head>
+        <title>Andrew Pinon | Portfolio</title>
+        <meta name="description" content="Portfolio of Andrew Pinon - Frontend Developer specializing in React, Next.js, and modern web animations." />
+        <meta property="og:title" content="Andrew Pinon | Portfolio" />
+        <meta property="og:description" content="Portfolio of Andrew Pinon - Frontend Developer specializing in React, Next.js, and modern web animations." />
+        <meta property="og:type" content="website" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
       <Intro />
       <motion.div
         variants={staggerContainer}
