@@ -124,8 +124,16 @@ if [ "${SKIP_DEFAULTS:-0}" = "0" ] && [ -f "$DOTFILES_DIR/scripts/macos-defaults
   bash "$DOTFILES_DIR/scripts/macos-defaults.sh" || true
 fi
 
+# 5) iTerm2 config
+# Tell iTerm2 to use the custom folder for preferences
+defaults write com.googlecode.iterm2 PrefsCustomFolder -string "$DOTFILES_DIR/iterm"
+# Tell iTerm2 to load the preferences from the custom folder
+defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
+
 cat <<'MSG'
 Done.
 - Open a new terminal session to pick up changes.
 - Fill in ~/.zshrc.secrets with your keys.
+- iTerm2 is now configured to load preferences from ~/.dotfiles/iterm.
+  - To sync your current profile, save it there or configure iTerm2 > Preferences > General > Preferences > Load preferences from a custom folder.
 MSG

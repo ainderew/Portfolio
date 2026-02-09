@@ -27,4 +27,19 @@ echo -e "${BLUE}Running bootstrap script...${NC}"
 
 # Ensure the script is executable
 chmod +x ./dotfiles/scripts/bootstrap.sh
+
+# Ensure Homebrew is installed and in PATH
+if ! command -v brew &> /dev/null; then
+  echo -e "${BLUE}Installing Homebrew...${NC}"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
+# Add Homebrew to PATH for this script (Apple Silicon)
+if [ -d "/opt/homebrew/bin" ]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+# Intel Mac
+elif [ -d "/usr/local/bin" ]; then
+  eval "$(/usr/local/bin/brew shellenv)"
+fi
+
 ./dotfiles/scripts/bootstrap.sh

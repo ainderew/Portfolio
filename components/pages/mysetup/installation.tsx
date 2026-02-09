@@ -58,19 +58,43 @@ const Installation: React.FC = () => {
       </div>
 
       <CopyArea
-        label="Install Homebrew"
+        label="1. Install Xcode Command Line Tools"
+        command="xcode-select --install"
+        instructions="Required prerequisite. A dialog will appear to confirm installation."
+      />
+      <CopyArea
+        label="2. Run One-Line Quick Setup"
+        instructions="This single command handles the entire process: installing Homebrew, cloning dotfiles, and running the bootstrap script."
+        command='/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/ainderew/Portfolio/main/public/install.sh)"'
+      />
+      
+      <div className='flex flex-col gap-2 mt-8 pt-8 border-t border-white/10'>
+        <h3 className='text-xl font-semibold text-lightAccent'>Alternative: Manual Setup</h3>
+        <p className='text-gray-400 text-sm'>
+          If you prefer to verify each step manually, follow these commands instead of the quick setup above.
+        </p>
+      </div>
+
+      <CopyArea
+        label="1. Install Homebrew"
         command='/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
         instructions="First, install Homebrew if you haven't already. It's required for installing packages."
       />
       <CopyArea
-        label="Add Brew To $PATH"
+        label="2. Add Brew To $PATH"
         instructions="You need to add brew to your $PATH to use the command in your terminal."
         command='(echo; echo "eval \"$(/opt/homebrew/bin/brew shellenv)\"") >> ~/.zprofile && eval "$(/opt/homebrew/bin/brew shellenv)"'
       />
+
       <CopyArea
-        label="One-Line Quick Setup"
-        instructions="Run this command to clone only the necessary dotfiles and run the setup script automatically."
-        command='/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/ainderew/Portfolio/main/public/install.sh)"'
+        label="3. Clone Repository"
+        instructions="Clone my portfolio repository to get access to the dotfiles and setup scripts."
+        command="git clone https://github.com/ainderew/Portfolio.git ~/Portfolio"
+      />
+      <CopyArea
+        label="4. Run Setup Script"
+        instructions="Run the bootstrap script to install dependencies, symlink configuration files, and set up the environment."
+        command="cd ~/Portfolio && ./dotfiles/scripts/bootstrap.sh"
       />
     </div>
   );
