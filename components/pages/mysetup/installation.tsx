@@ -51,22 +51,31 @@ const Installation: React.FC = () => {
   return (
     <div className='installation w-[100%] xl:w-[70vw] flex flex-col gap-8 items-start my-14'>
       <div className='flex flex-col gap-2'>
-        <h2 className='text-3xl font-semibold text-lightAccent'>My Setup Shortcut</h2>
-        <p className=''>
-					I've compiled these commands to make life a lot easier when getting a new device ready so
-					that I don't forget anything important as well
+        <h2 className='text-3xl font-semibold text-lightAccent'>Automated Setup</h2>
+        <p className='text-gray-400'>
+          Follow these steps to replicate my development environment on a new machine.
         </p>
       </div>
 
       <CopyArea
-        label='Install Homebrew'
-        command='/bin/bash -c "$(curl -fsSL
-				https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
+        label="Install Homebrew"
+        command='/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
+        instructions="First, install Homebrew if you haven't already. It's required for installing packages."
       />
       <CopyArea
-        label='Add Brew To $PATH'
-        instructions='You need to add brew to your $PATH to use the command in your terminal'
-        command='export PATH="/opt/homebrew/bin:$PATH" >> ~/.zshrc'
+        label="Add Brew To $PATH"
+        instructions="You need to add brew to your $PATH to use the command in your terminal."
+        command='(echo; echo "eval \"$(/opt/homebrew/bin/brew shellenv)\"") >> ~/.zprofile && eval "$(/opt/homebrew/bin/brew shellenv)"'
+      />
+      <CopyArea
+        label="Clone Repository"
+        instructions="Clone my portfolio repository to get access to the dotfiles and setup scripts."
+        command="git clone https://github.com/ainderew/Portfolio.git ~/Portfolio"
+      />
+      <CopyArea
+        label="Run Setup Script"
+        instructions="Run the bootstrap script to install dependencies, symlink configuration files, and set up the environment."
+        command="cd ~/Portfolio && ./dotfiles/scripts/bootstrap.sh"
       />
     </div>
   );
