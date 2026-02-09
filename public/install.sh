@@ -15,11 +15,14 @@ if [ -d "$INSTALL_DIR" ]; then
   echo -e "${BLUE}Directory $INSTALL_DIR already exists. Updating...${NC}"
   cd "$INSTALL_DIR"
   git pull
+  git submodule update --init --recursive
 else
   echo -e "${BLUE}Cloning dotfiles to $INSTALL_DIR...${NC}"
   git clone --depth 1 --filter=blob:none --sparse "$REPO_URL" "$INSTALL_DIR"
   cd "$INSTALL_DIR"
   git sparse-checkout set dotfiles
+  echo -e "${BLUE}Initializing submodules (e.g. Neovim config)...${NC}"
+  git submodule update --init --recursive
 fi
 
 echo -e "${GREEN}Repository ready.${NC}"
