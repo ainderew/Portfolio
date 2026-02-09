@@ -68,14 +68,9 @@ const Installation: React.FC = () => {
         command='(echo; echo "eval \"$(/opt/homebrew/bin/brew shellenv)\"") >> ~/.zprofile && eval "$(/opt/homebrew/bin/brew shellenv)"'
       />
       <CopyArea
-        label="Clone Repository"
-        instructions="Clone my portfolio repository to get access to the dotfiles and setup scripts."
-        command="git clone https://github.com/ainderew/Portfolio.git ~/Portfolio"
-      />
-      <CopyArea
-        label="Run Setup Script"
-        instructions="Run the bootstrap script to install dependencies, symlink configuration files, and set up the environment."
-        command="cd ~/Portfolio && ./dotfiles/scripts/bootstrap.sh"
+        label="One-Line Quick Setup"
+        instructions="Run this command to clone only the necessary dotfiles and run the setup script automatically."
+        command='/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/ainderew/Portfolio/main/public/install.sh)"'
       />
     </div>
   );
