@@ -67,11 +67,13 @@ export const ExperienceDetails = ({ data }: props) => {
         >
           {logo && (
             <div className="mb-6 flex items-center">
-              <img
-                src={logo}
-                alt={`${employer} logo`}
-                className="h-12 xl:h-16 w-auto object-contain"
-              />
+              <div className="bg-white/90 backdrop-blur-sm px-3 py-2 rounded-lg shadow-md inline-flex items-center">
+                <img
+                  src={logo}
+                  alt={`${employer} logo`}
+                  className="h-6 xl:h-8 w-auto object-contain"
+                />
+              </div>
             </div>
           )}
           <div className="flex flex-col gap-4">{renderPosition()}</div>
