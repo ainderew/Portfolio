@@ -79,6 +79,7 @@ const Experience: React.FC = () => {
                   experienceKey={el.experienceKey}
                   active={experienceKey === el.experienceKey}
                   clickHandler={handleExperienceClick}
+                  logo={el.logo}
                 />
                 {experienceKey === el.experienceKey && (
                   <motion.div

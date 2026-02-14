@@ -55,12 +55,14 @@ export const experiences: experienceObject = {
 
 export const jobList = [
   {
-    name: "Expertise.com",
+    name: "Expertise.com (Forbes Advisor)",
     experienceKey: "expertise",
+    logo: "/assets/expertise-logo.svg",
   },
   {
     name: "Theoria Medical",
     experienceKey: "theoria",
+    logo: "/assets/theoria-logo.svg",
   },
   {
     name: "Group61",

@@ -65,17 +65,6 @@ export const ExperienceDetails = ({ data }: props) => {
           }}
           className="test h-full w-full xl:w-full xl:px-8 flex flex-col"
         >
-          {logo && (
-            <div className="mb-6 flex items-center">
-              <div className="bg-white/90 backdrop-blur-sm px-3 py-2 rounded-lg shadow-md inline-flex items-center">
-                <img
-                  src={logo}
-                  alt={`${employer} logo`}
-                  className="h-6 xl:h-8 w-auto object-contain"
-                />
-              </div>
-            </div>
-          )}
           <div className="flex flex-col gap-4">{renderPosition()}</div>
           <span className="text-sm xl:text-lg my-5 text-accesnt">
             Responsibilites and Achievements
