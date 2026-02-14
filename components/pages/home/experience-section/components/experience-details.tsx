@@ -7,7 +7,7 @@ type props = {
 };
 
 export const ExperienceDetails = ({ data }: props) => {
-  const { position, duration, employer, link, responsibilities, techstack } =
+  const { position, duration, employer, link, logo, responsibilities, techstack } =
     data;
 
   function renderPosition() {
@@ -65,6 +65,15 @@ export const ExperienceDetails = ({ data }: props) => {
           }}
           className="test h-full w-full xl:w-full xl:px-8 flex flex-col"
         >
+          {logo && (
+            <div className="mb-6 flex items-center">
+              <img
+                src={logo}
+                alt={`${employer} logo`}
+                className="h-12 xl:h-16 w-auto object-contain"
+              />
+            </div>
+          )}
           <div className="flex flex-col gap-4">{renderPosition()}</div>
           <span className="text-sm xl:text-lg my-5 text-accesnt">
             Responsibilites and Achievements

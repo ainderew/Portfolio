@@ -3,6 +3,7 @@ export interface workExperienceData{
 	duration: string | string[],
 	employer: string,
 	link: string,
+	logo?: string,
 	responsibilities: string[],
 	techstack: string[]
 }

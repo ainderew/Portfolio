@@ -1,10 +1,15 @@
-import { useState } from 'react';
-import { motion, useViewportScroll, useTransform, useSpring } from 'framer-motion';
-import { useRefScrollProgress } from '../../../../hooks/scrollObserver';
-import { ExperienceDetails } from './components/experience-details';
-import ExperienceList from './components/experience-list';
-import { experiences, jobList } from './data/experience-data';
-import { experienceObject } from '../../../../core/types/base';
+import { useState } from "react";
+import {
+  motion,
+  useViewportScroll,
+  useTransform,
+  useSpring,
+} from "framer-motion";
+import { useRefScrollProgress } from "../../../../hooks/scrollObserver";
+import { ExperienceDetails } from "./components/experience-details";
+import ExperienceList from "./components/experience-list";
+import { experiences, jobList } from "./data/experience-data";
+import { experienceObject } from "../../../../core/types/base";
 
 const Experience: React.FC = () => {
   const data: experienceObject = experiences;
@@ -14,16 +19,16 @@ const Experience: React.FC = () => {
   const xTransform = useTransform(
     scrollYProgress,
     [start - 0.5, stop + 0.5],
-    [400, -400]
+    [400, -400],
   );
-  
+
   const xTextAnim = useSpring(xTransform, {
     stiffness: 100,
     damping: 30,
-    restDelta: 0.001
+    restDelta: 0.001,
   });
 
-  const [experienceKey, setExperienceKey] = useState<string>('theoria');
+  const [experienceKey, setExperienceKey] = useState<string>("expertise");
 
   const handleExperienceClick = (key: string) => {
     setExperienceKey(key);
@@ -46,7 +51,7 @@ const Experience: React.FC = () => {
           className="mb-20 flex flex-col xl:flex-row justify-between items-start xl:items-end gap-4"
         >
           <div className="space-y-2">
-            <motion.p 
+            <motion.p
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
@@ -54,7 +59,7 @@ const Experience: React.FC = () => {
             >
               Career Path
             </motion.p>
-            <motion.h3 
+            <motion.h3
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1 }}
@@ -79,7 +84,7 @@ const Experience: React.FC = () => {
                   <motion.div
                     layoutId="active-job-indicator"
                     className="absolute left-0 xl:-left-4 top-0 bottom-0 w-[4px] bg-accent"
-                    transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
                   />
                 )}
               </div>
