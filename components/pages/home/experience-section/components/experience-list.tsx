@@ -22,16 +22,14 @@ const ExperienceList: React.FC<props> = ({
         active ? 'opacity-100' : 'opacity-40 hover:opacity-70'
       }`}
     >
-      <div className="py-4 xl:py-5 px-5 xl:px-6 flex flex-col gap-3">
+      <div className="py-4 xl:py-5 px-5 xl:px-6 flex items-center gap-3">
         {logo && (
-          <div className="inline-flex self-start">
-            <div className="bg-white/90 rounded px-1.5 py-1">
-              <img
-                src={logo}
-                alt={`${label} logo`}
-                className="h-3 w-auto max-w-[80px] object-contain"
-              />
-            </div>
+          <div className="w-7 h-7 rounded-full bg-white/90 flex items-center justify-center flex-shrink-0 overflow-hidden">
+            <img
+              src={logo}
+              alt={`${label} logo`}
+              className="w-4 h-4 object-contain"
+            />
           </div>
         )}
         <span className="text-[10px] xl:text-xs font-bold uppercase tracking-[0.2em] text-white/60">

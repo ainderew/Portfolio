@@ -203,10 +203,13 @@ const HorizontalProjects: React.FC = () => {
             <span className="text-[10px] font-black tracking-[0.4em] uppercase opacity-30">
               Scroll to Explore
             </span>
-            <div className="h-[2px] w-64 bg-white/10 relative">
+            <div className="h-[2px] w-64 bg-white/10 relative rounded-full overflow-hidden">
               <motion.div
-                className="absolute inset-0 bg-accent origin-left"
-                style={{ scaleX: localProgress }}
+                className="absolute inset-0 origin-left rounded-full"
+                style={{
+                  scaleX: localProgress,
+                  background: 'linear-gradient(90deg, #DE682C, #af4261)',
+                }}
               />
             </div>
           </div>
