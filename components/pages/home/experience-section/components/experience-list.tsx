@@ -1,29 +1,58 @@
-type props =  {
+import { motion } from 'framer-motion';
+
+type props = {
   label: string;
   experienceKey: string;
-	active: boolean;
-  clickHandler: (experienceKey: string)=>void;
+  active: boolean;
+  clickHandler: (experienceKey: string) => void;
   logo?: string;
-}
+};
 
-
-const ExperienceList: React.FC<props> = ({ label, experienceKey, active, clickHandler, logo }: props) => {
-
-  return  (
-    <li
+const ExperienceList: React.FC<props> = ({
+  label,
+  experienceKey,
+  active,
+  clickHandler,
+  logo,
+}: props) => {
+  return (
+    <button
       onClick={() => clickHandler(experienceKey)}
-      className={`p-4 min-w-[150px] max-w-[500px] border-b-4 border-l-0 xl:border-b-0 xl:border-l-4 border-gray-300 flex items-center gap-3 ${active ? 'bg-accent text-white' : 'bg-[#333333]'}`}>
-      {logo && (
-        <div className="bg-white/90 rounded px-1.5 py-1 flex-shrink-0">
-          <img
-            src={logo}
-            alt={`${label} logo`}
-            className="h-4 w-4 object-contain"
-          />
-        </div>
+      className={`group relative w-full text-left cursor-pointer transition-all duration-300 ${
+        active ? 'opacity-100' : 'opacity-40 hover:opacity-70'
+      }`}
+    >
+      <div className="py-4 xl:py-5 px-5 xl:px-6 flex flex-col gap-3">
+        {logo && (
+          <div className="inline-flex self-start">
+            <div className="bg-white/90 rounded-md px-2.5 py-1.5">
+              <img
+                src={logo}
+                alt={`${label} logo`}
+                className="h-4 xl:h-5 w-auto max-w-[120px] xl:max-w-[140px] object-contain"
+              />
+            </div>
+          </div>
+        )}
+        <span className="text-[10px] xl:text-xs font-bold uppercase tracking-[0.2em] text-white/60">
+          {label}
+        </span>
+      </div>
+
+      {active && (
+        <motion.div
+          layoutId="active-job-indicator"
+          className="absolute left-0 top-0 bottom-0 w-[3px] bg-accent"
+          transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+        />
       )}
-      <span className="whitespace-nowrap">{label}</span>
-    </li>
+
+      <div
+        className={`absolute bottom-0 left-5 right-5 h-px transition-colors duration-300 ${
+          active ? 'bg-white/10' : 'bg-white/5'
+        }`}
+      />
+    </button>
   );
 };
 

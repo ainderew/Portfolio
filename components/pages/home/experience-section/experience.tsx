@@ -4,6 +4,8 @@ import {
   useViewportScroll,
   useTransform,
   useSpring,
+  AnimatePresence,
+  LayoutGroup,
 } from "framer-motion";
 import { useRefScrollProgress } from "../../../../hooks/scrollObserver";
 import { ExperienceDetails } from "./components/experience-details";
@@ -70,37 +72,30 @@ const Experience: React.FC = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 xl:grid-cols-[250px_1fr] gap-10 xl:gap-20">
-          <div className="flex flex-col gap-2">
-            {jobList.map((el) => (
-              <div className="relative group" key={el.experienceKey}>
+        <div className="grid grid-cols-1 xl:grid-cols-[280px_1fr] gap-8 xl:gap-16">
+          <LayoutGroup>
+            <div className="flex flex-row xl:flex-col overflow-x-auto xl:overflow-visible border-b xl:border-b-0 border-white/5">
+              {jobList.map((el) => (
                 <ExperienceList
+                  key={el.experienceKey}
                   label={el.name}
                   experienceKey={el.experienceKey}
                   active={experienceKey === el.experienceKey}
                   clickHandler={handleExperienceClick}
                   logo={el.logo}
                 />
-                {experienceKey === el.experienceKey && (
-                  <motion.div
-                    layoutId="active-job-indicator"
-                    className="absolute left-0 xl:-left-4 top-0 bottom-0 w-[4px] bg-accent"
-                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                  />
-                )}
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          </LayoutGroup>
 
-          <motion.div
-            key={experienceKey}
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] }}
-            className="bg-white/5 backdrop-blur-sm border border-white/10 p-8 xl:p-16 rounded-2xl shadow-2xl"
-          >
-            <ExperienceDetails data={data[experienceKey]} />
-          </motion.div>
+          <div className="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-8 xl:p-12 min-h-[500px]">
+            <AnimatePresence mode="wait">
+              <ExperienceDetails
+                key={experienceKey}
+                data={data[experienceKey]}
+              />
+            </AnimatePresence>
+          </div>
         </div>
       </div>
     </section>
