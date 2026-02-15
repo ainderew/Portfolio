@@ -6,7 +6,7 @@ export const experiences: experienceObject = {
     duration: "Feb 2026 – Present",
     employer: "Expertise.com (Forbes Advisor)",
     link: "https://www.linkedin.com/company/expertise-llc",
-    logo: "/assets/expertise-logo.svg",
+    logo: "/assets/expertise-icon.svg",
     responsibilities: [
       "Developing full-stack features for a professional matching platform serving 200+ service industries",
       "Building scalable solutions to connect consumers with vetted service providers nationwide",
@@ -20,7 +20,7 @@ export const experiences: experienceObject = {
     duration: ["Aug 2023 – Present", "Jun 2022 – Aug 2023"],
     employer: "Theoria Medical",
     link: "https://www.linkedin.com/company/theoria-medical",
-    logo: "/assets/theoria-logo.svg",
+    logo: "/assets/theoria-icon.svg",
     responsibilities: [
       "Spearheaded the adoption of End-to-end testing and automated CI/CD pipelines for a 3-man team, reducing production deployment errors and establishing a culture of peer code reviews.",
       "Collaborated with a senior engineering team to execute a massive infrastructure optimization of our medical platform; leveraged Microsoft Azure Application Insights to identify application bloat, successfully consolidating the environment from 90 servers (VMs) down to 10.",
@@ -57,12 +57,12 @@ export const jobList = [
   {
     name: "Expertise.com (Forbes Advisor)",
     experienceKey: "expertise",
-    logo: "/assets/expertise-logo.svg",
+    logo: "/assets/expertise-icon.svg",
   },
   {
     name: "Theoria Medical",
     experienceKey: "theoria",
-    logo: "/assets/theoria-logo.svg",
+    logo: "/assets/theoria-icon.svg",
   },
   {
     name: "Group61",
