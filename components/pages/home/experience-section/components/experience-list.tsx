@@ -25,11 +25,11 @@ const ExperienceList: React.FC<props> = ({
       <div className="py-4 xl:py-5 px-5 xl:px-6 flex flex-col gap-3">
         {logo && (
           <div className="inline-flex self-start">
-            <div className="bg-white/90 rounded-md px-2.5 py-1.5">
+            <div className="bg-white/90 rounded px-1.5 py-1">
               <img
                 src={logo}
                 alt={`${label} logo`}
-                className="h-4 xl:h-5 w-auto max-w-[120px] xl:max-w-[140px] object-contain"
+                className="h-3 w-auto max-w-[80px] object-contain"
               />
             </div>
           </div>
