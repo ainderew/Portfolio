@@ -6,7 +6,7 @@ type props = {
 };
 
 export const ExperienceDetails = ({ data }: props) => {
-  const { position, duration, employer, link, responsibilities, techstack } =
+  const { position, duration, employer, location, link, responsibilities, techstack } =
     data;
 
   function renderPosition() {
@@ -66,6 +66,12 @@ export const ExperienceDetails = ({ data }: props) => {
           />
         </svg>
       </a>
+
+      {location && (
+        <p className="text-[10px] xl:text-xs font-bold uppercase tracking-[0.2em] text-white/20 mb-6">
+          {location}
+        </p>
+      )}
 
       <div className="flex flex-col gap-3 mb-8">{renderPosition()}</div>
 

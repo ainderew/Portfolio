@@ -5,6 +5,7 @@ export const experiences: experienceObject = {
     position: "Senior Software Engineer",
     duration: "Feb 2026 – Present",
     employer: "Expertise.com (Forbes Advisor)",
+    location: "California (Remote)",
     link: "https://www.linkedin.com/company/expertise-llc",
     logo: "/assets/expertise-icon.svg",
     responsibilities: [
@@ -19,6 +20,7 @@ export const experiences: experienceObject = {
     position: ["Senior Full Stack Developer", "Full Stack Developer"],
     duration: ["Aug 2023 – Present", "Jun 2022 – Aug 2023"],
     employer: "Theoria Medical",
+    location: "Michigan (Remote)",
     link: "https://www.linkedin.com/company/theoria-medical",
     logo: "/assets/theoria-icon.svg",
     responsibilities: [
@@ -44,6 +46,7 @@ export const experiences: experienceObject = {
     duration: "Sep 2020 - June 2021",
     employer: "Group 61",
     link: "https://group61.com",
+    logo: "/assets/briefcase-icon.svg",
     responsibilities: [
       "Communicated with stakeholders directly to integrate demands into technical plans",
       "Designed Restful APIs to handle automation of student enrollment",
@@ -67,5 +70,6 @@ export const jobList = [
   {
     name: "Group61",
     experienceKey: "group61",
+    logo: "/assets/briefcase-icon.svg",
   },
 ];
