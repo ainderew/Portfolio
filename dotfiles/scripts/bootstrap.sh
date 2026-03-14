@@ -4,6 +4,11 @@ set -euo pipefail
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 OBSIDIAN_REPO_SSH="git@github.com:ainderew/Obsidian.git"
 OBSIDIAN_DIR="$HOME/Andrew_Notes"
+LINK_ONLY=0
+
+if [ "${1:-}" = "--link-only" ]; then
+  LINK_ONLY=1
+fi
 
 install_oh_my_zsh() {
   if [ ! -d "$HOME/.oh-my-zsh" ]; then
@@ -19,6 +24,26 @@ install_powerlevel10k() {
   if [ ! -d "$theme_dir" ]; then
     echo "Installing Powerlevel10k..."
     git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$theme_dir"
+  fi
+}
+
+install_zsh_plugins() {
+  local zsh_custom="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"
+  local plugins=(zsh-autosuggestions zsh-syntax-highlighting)
+  for plugin in "${plugins[@]}"; do
+    local plugin_dir="$zsh_custom/plugins/$plugin"
+    if [ ! -d "$plugin_dir" ]; then
+      echo "Installing $plugin..."
+      git clone --depth=1 "https://github.com/zsh-users/$plugin.git" "$plugin_dir"
+    fi
+  done
+}
+
+install_tpm() {
+  local tpm_dir="$HOME/.tmux/plugins/tpm"
+  if [ ! -d "$tpm_dir" ]; then
+    echo "Installing TPM (tmux plugin manager)..."
+    git clone --depth=1 https://github.com/tmux-plugins/tpm "$tpm_dir"
   fi
 }
 
@@ -54,6 +79,7 @@ backup() {
   if [ -e "$target" ] && [ ! -L "$target" ]; then
     local ts
     ts="$(date +%Y%m%d%H%M%S)"
+    echo "  Backing up $target -> ${target}.bak.${ts}"
     mv "$target" "${target}.bak.${ts}"
   fi
 }
@@ -64,82 +90,82 @@ link_file() {
   backup "$dest"
   mkdir -p "$(dirname "$dest")"
   ln -sfn "$src" "$dest"
+  echo "  Linked $dest"
 }
 
-# 0) Shell framework + prompt theme
-install_oh_my_zsh
-install_powerlevel10k
+if [ "$LINK_ONLY" = "0" ]; then
+  # 0) Shell framework + prompt theme + plugins
+  install_oh_my_zsh
+  install_powerlevel10k
+  install_zsh_plugins
 
-# 0.5) SSH key (optional)
-if [ "${SKIP_SSH:-0}" = "0" ]; then
-  ensure_ssh_key
+  # 0.5) SSH key (optional)
+  if [ "${SKIP_SSH:-0}" = "0" ]; then
+    ensure_ssh_key
+  fi
 fi
 
 # 1) Symlink configs
+echo "Linking config files..."
 link_file "$DOTFILES_DIR/zsh/.zshrc" "$HOME/.zshrc"
 link_file "$DOTFILES_DIR/zsh/.zprofile" "$HOME/.zprofile"
 link_file "$DOTFILES_DIR/zsh/.p10k.zsh" "$HOME/.p10k.zsh"
 link_file "$DOTFILES_DIR/tmux/.tmux.conf" "$HOME/.tmux.conf"
 link_file "$DOTFILES_DIR/nvim" "$HOME/.config/nvim"
 link_file "$DOTFILES_DIR/zsh/aliases.zsh" "$HOME/.config/zsh/aliases.zsh"
+link_file "$DOTFILES_DIR/kitty" "$HOME/.config/kitty"
+link_file "$DOTFILES_DIR/claude/CLAUDE.md" "$HOME/.claude/CLAUDE.md"
+link_file "$DOTFILES_DIR/git/.gitconfig" "$HOME/.gitconfig"
+link_file "$DOTFILES_DIR/git/.gitconfig-personal" "$HOME/.gitconfig-personal"
 
-# 2) Secrets template
-if [ ! -f "$HOME/.zshrc.secrets" ]; then
-  cp "$DOTFILES_DIR/zsh/.zshrc.secrets.example" "$HOME/.zshrc.secrets"
-  chmod 600 "$HOME/.zshrc.secrets"
-fi
+if [ "$LINK_ONLY" = "0" ]; then
+  # 2) TPM (tmux plugin manager)
+  install_tpm
 
-# 3) Homebrew bundle (if brew exists)
-if [ "${SKIP_BREW:-0}" = "0" ]; then
-  if command -v brew >/dev/null 2>&1; then
-    brew bundle --file "$DOTFILES_DIR/Brewfile"
+  # 3) Secrets template
+  if [ ! -f "$HOME/.zshrc.secrets" ]; then
+    cp "$DOTFILES_DIR/zsh/.zshrc.secrets.example" "$HOME/.zshrc.secrets"
+    chmod 600 "$HOME/.zshrc.secrets"
+  fi
 
-    # Optional: install Node via nvm
-    if [ "${SKIP_NODE:-0}" = "0" ]; then
-      export NVM_DIR="$HOME/.nvm"
-      mkdir -p "$NVM_DIR"
-      if [ -s "$(brew --prefix nvm)/nvm.sh" ]; then
-        # shellcheck disable=SC1090
-        . "$(brew --prefix nvm)/nvm.sh"
-        nvm install --lts
-        nvm use --lts
+  # 4) Homebrew bundle (if brew exists)
+  if [ "${SKIP_BREW:-0}" = "0" ]; then
+    if command -v brew >/dev/null 2>&1; then
+      brew bundle --file "$DOTFILES_DIR/Brewfile"
+
+      # Optional: install Node via nvm
+      if [ "${SKIP_NODE:-0}" = "0" ]; then
+        export NVM_DIR="$HOME/.nvm"
+        mkdir -p "$NVM_DIR"
+        if [ -s "$(brew --prefix nvm)/nvm.sh" ]; then
+          # shellcheck disable=SC1090
+          . "$(brew --prefix nvm)/nvm.sh"
+          nvm install --lts
+          nvm use --lts
+        fi
       fi
+    else
+      echo "Homebrew not found. Install it, then run: brew bundle --file $DOTFILES_DIR/Brewfile"
     fi
-  else
-    echo "Homebrew not found. Install it, then run: brew bundle --file $DOTFILES_DIR/Brewfile"
+  fi
+
+  # 5) Obsidian vault (optional)
+  if [ "${SKIP_OBSIDIAN:-0}" = "0" ]; then
+    if [ -d "$OBSIDIAN_DIR/.git" ]; then
+      git -C "$OBSIDIAN_DIR" pull --ff-only
+    else
+      git clone "$OBSIDIAN_REPO_SSH" "$OBSIDIAN_DIR"
+    fi
+  fi
+
+  # 6) macOS defaults (optional)
+  if [ "${SKIP_DEFAULTS:-0}" = "0" ] && [ -f "$DOTFILES_DIR/scripts/macos-defaults.sh" ]; then
+    bash "$DOTFILES_DIR/scripts/macos-defaults.sh" || true
   fi
 fi
 
-# 4) Obsidian vault (optional)
-if [ "${SKIP_OBSIDIAN:-0}" = "0" ]; then
-  if [ -d "$OBSIDIAN_DIR/.git" ]; then
-    git -C "$OBSIDIAN_DIR" pull --ff-only
-  else
-    git clone "$OBSIDIAN_REPO_SSH" "$OBSIDIAN_DIR"
-  fi
+echo "Done. Open a new terminal session to pick up changes."
+if [ "$LINK_ONLY" = "0" ]; then
+  echo "- Fill in ~/.zshrc.secrets with your keys."
+  echo "- Run 'prefix + I' inside tmux to install plugins."
 fi
-
-# 4) macOS defaults (optional)
-if [ "${SKIP_DEFAULTS:-0}" = "0" ] && [ -f "$DOTFILES_DIR/scripts/macos-defaults.sh" ]; then
-  bash "$DOTFILES_DIR/scripts/macos-defaults.sh" || true
-fi
-
-# 5) iTerm2 config
-ITERM_PLIST="$DOTFILES_DIR/iterm/com.googlecode.iterm2.plist"
-if [ -f "$ITERM_PLIST" ]; then
-  echo "Applying iTerm2 configuration from $ITERM_PLIST..."
-  # Tell iTerm2 to use the custom folder for preferences
-  defaults write com.googlecode.iterm2 PrefsCustomFolder -string "$DOTFILES_DIR/iterm"
-  # Tell iTerm2 to load the preferences from the custom folder
-  defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
-else
-  echo "No iTerm2 configuration found in repo ($ITERM_PLIST)."
-  echo "Skipping iTerm2 preference loading to avoid errors."
-  echo "To sync your settings: iTerm2 > Prefs > General > Prefs > Save settings to folder: $DOTFILES_DIR/iterm"
-fi
-
-cat <<'MSG'
-Done.
-- Open a new terminal session to pick up changes.
-- Fill in ~/.zshrc.secrets with your keys.
-MSG

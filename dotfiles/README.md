@@ -22,6 +22,8 @@ Open a new terminal session.
 
 - Homebrew packages from `dotfiles/Brewfile`
 - macOS defaults via `dotfiles/scripts/macos-defaults.sh`
+- Oh My Zsh plugins (zsh-autosuggestions, zsh-syntax-highlighting)
+- TPM (tmux plugin manager) — run `prefix + I` inside tmux to install plugins
 - Symlinks for:
   - `~/.zshrc`
   - `~/.zprofile`
@@ -29,6 +31,10 @@ Open a new terminal session.
   - `~/.config/nvim`
   - `~/.tmux.conf`
   - `~/.config/zsh/aliases.zsh`
+  - `~/.config/kitty`
+  - `~/.claude/CLAUDE.md`
+  - `~/.gitconfig`
+  - `~/.gitconfig-personal`
 
 ## Notes
 

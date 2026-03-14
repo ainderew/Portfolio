@@ -83,7 +83,7 @@ alias ssh_server_3="ssh -i ~/.ssh/tm-andrew -t azureuser@4.227.158.17"
 alias ssh_server_4="ssh -i ~/.ssh/tm-andrew -t azureuser@52.191.59.203"
 
 # Production ChatEasy Client
-alias ssh_client="ssh -i ~/.ssh/tm-andrew azureuser@20.228.229.234 -t 'cd /var/web/tm-chateasy-client; exec bash'"
+alias ssh_client="ssh -i ~/.ssh/tm-andrew azureuser@20.228.229.234"
 
 # PRODUCTION TM-Admin-Server
 alias ssh_admin_server0="ssh -i ~/.ssh/tm-andrew james@13.68.196.103"
@@ -137,3 +137,12 @@ alias ssh_bb="ssh -i ~/.ssh/bg-andrew root@128.199.145.173"
 alias vpn_on="sudo openvpn --config /System/Volumes/Data/Users/AndrewPinon/Library/Application\ Support/OpenVPN\ Connect/profiles/1732035072633.ovpn"
 
 alias ta="tmux attach-session -t"
+
+# Claude Code
+alias cc="claude"
+alias ccc="claude --continue"
+alias ccr="claude --resume"
+alias ccp="claude --print"
+
+# Re-sign nvim tree-sitter parsers (fixes macOS code signature crashes)
+alias tsfix='for f in ~/.local/share/nvim/site/parser/*.so; do codesign --force --sign - "$f"; done'

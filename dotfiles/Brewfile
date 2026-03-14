@@ -3,12 +3,16 @@
 # Core
 brew "git"
 brew "ripgrep"
+brew "fd"
 brew "fzf"
 brew "bat"
+brew "gh"
+brew "jq"
 brew "zoxide"
 brew "tmux"
 brew "neovim"
-brew "starship"
+brew "difftastic"
+brew "ast-grep"
 
 # Node
 brew "nvm"
@@ -17,12 +21,10 @@ brew "nvm"
 cask "font-jetbrains-mono"
 
 # Terminal + utilities
-cask "iterm2"
+cask "kitty"
 cask "obsidian"
 
-# Optional dev tools (uncomment as needed)
-# brew "gh"
-# brew "jq"
+# Optional (uncomment as needed)
 # brew "wget"
 # cask "raycast"
 # cask "google-chrome"

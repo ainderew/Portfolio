@@ -96,6 +96,19 @@ const Installation: React.FC = () => {
         instructions="Run the bootstrap script to install dependencies, symlink configuration files, and set up the environment."
         command="cd ~/Portfolio && ./dotfiles/scripts/bootstrap.sh"
       />
+
+      <div className='flex flex-col gap-2 mt-8 pt-8 border-t border-white/10'>
+        <h3 className='text-xl font-semibold text-lightAccent'>Already Set Up? Sync Changes</h3>
+        <p className='text-gray-400 text-sm'>
+          If you've already run the bootstrap on this machine and just want to pull the latest config changes.
+        </p>
+      </div>
+
+      <CopyArea
+        label="Pull & Re-link"
+        instructions="Pulls the latest dotfile changes and re-creates all symlinks without re-installing dependencies."
+        command="cd ~/Portfolio && git pull && ./dotfiles/scripts/bootstrap.sh --link-only"
+      />
     </div>
   );
 };

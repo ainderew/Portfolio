@@ -1,0 +1,7 @@
+[user]
+	name = Andrew Pinon
+	email = pinon@theoriamedical.com
+[includeIf "gitdir:~/projects/"]
+	path = ~/.gitconfig-personal
+[init]
+	defaultBranch = main
