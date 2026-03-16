@@ -115,6 +115,29 @@ link_file "$DOTFILES_DIR/nvim" "$HOME/.config/nvim"
 link_file "$DOTFILES_DIR/zsh/aliases.zsh" "$HOME/.config/zsh/aliases.zsh"
 link_file "$DOTFILES_DIR/kitty" "$HOME/.config/kitty"
 link_file "$DOTFILES_DIR/claude/CLAUDE.md" "$HOME/.claude/CLAUDE.md"
+link_file "$DOTFILES_DIR/claude/keybindings.json" "$HOME/.claude/keybindings.json"
+link_file "$DOTFILES_DIR/claude/statusline-command.sh" "$HOME/.claude/statusline-command.sh"
+link_file "$DOTFILES_DIR/claude/mcp.json" "$HOME/.claude/mcp.json"
+link_file "$DOTFILES_DIR/claude/hooks" "$HOME/.claude/hooks"
+link_file "$DOTFILES_DIR/claude/commands" "$HOME/.claude/commands"
+link_file "$DOTFILES_DIR/claude/agents" "$HOME/.claude/agents"
+link_file "$DOTFILES_DIR/claude/skills" "$HOME/.claude/skills"
+
+# Claude Code — templated configs (copy with path substitution)
+for tpl in settings.json settings.local.json; do
+  if [ ! -f "$HOME/.claude/$tpl" ] || [ -L "$HOME/.claude/$tpl" ]; then
+    backup "$HOME/.claude/$tpl"
+    sed "s|{{HOME}}|$HOME|g" "$DOTFILES_DIR/claude/${tpl}.tpl" > "$HOME/.claude/$tpl"
+    echo "  Generated ~/.claude/$tpl"
+  fi
+done
+
+# CARL rule system
+for f in manifest global commands context example-custom-domain; do
+  link_file "$DOTFILES_DIR/carl/$f" "$HOME/.carl/$f"
+done
+mkdir -p "$HOME/.carl/sessions"
+
 link_file "$DOTFILES_DIR/git/.gitconfig" "$HOME/.gitconfig"
 link_file "$DOTFILES_DIR/git/.gitconfig-personal" "$HOME/.gitconfig-personal"
 
@@ -128,7 +151,18 @@ if [ "$LINK_ONLY" = "0" ]; then
     chmod 600 "$HOME/.zshrc.secrets"
   fi
 
-  # 4) Homebrew bundle (if brew exists)
+  # 4) Claude Code plugins (requires claude CLI)
+  if [ "${SKIP_CLAUDE_PLUGINS:-0}" = "0" ] && command -v claude >/dev/null 2>&1; then
+    echo "Installing Claude Code plugins..."
+    claude plugins install typescript-lsp@claude-plugins-official || true
+    claude plugins install code-review@claude-code-plugins || true
+    claude plugins install feature-dev@claude-code-plugins || true
+    claude plugins install frontend-design@claude-code-plugins || true
+    claude plugins install figma@claude-plugins-official || true
+    claude plugins install impeccable@impeccable || true
+  fi
+
+  # 5) Homebrew bundle (if brew exists)
   if [ "${SKIP_BREW:-0}" = "0" ]; then
     if command -v brew >/dev/null 2>&1; then
       brew bundle --file "$DOTFILES_DIR/Brewfile"

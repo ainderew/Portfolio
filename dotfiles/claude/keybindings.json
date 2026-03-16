@@ -1,0 +1,19 @@
+{
+  "bindings": [
+    {
+      "context": "Chat",
+      "bindings": {
+        "ctrl+e": "chat:externalEditor",
+        "ctrl+k ctrl+o": "chat:cycleModeForward",
+        "ctrl+k ctrl+m": "chat:modelPicker",
+        "ctrl+k ctrl+t": "chat:toggleThinking"
+      }
+    },
+    {
+      "context": "Global",
+      "bindings": {
+        "ctrl+k ctrl+d": "global:toggleTodos"
+      }
+    }
+  ]
+}

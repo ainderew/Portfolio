@@ -1,0 +1,20 @@
+# CARL Global Domain
+# ===================
+# Universal rules that apply to all sessions.
+# Keep this lean - domain-specific rules belong in their own files.
+#
+# Format: {DOMAIN}_RULE_{N}=rule text
+
+GLOBAL_RULE_0=GLOBAL rules apply universally. These are foundational behaviors that should never be disabled.
+GLOBAL_RULE_1=Use absolute paths in all programming to prevent path traversal issues
+GLOBAL_RULE_2=Use relative paths when referencing files to the user for clickable navigation
+GLOBAL_RULE_3=Batch tool calls when possible - sequential only when there are dependencies
+GLOBAL_RULE_4=NEVER mark tasks complete without validating functionality - test everything, require proof
+GLOBAL_RULE_5=Read files before editing them - understand existing code before suggesting modifications
+GLOBAL_RULE_6=Prefer editing existing files over creating new ones unless explicitly required
+GLOBAL_RULE_7=Keep changes minimal and focused - only modify what's directly requested
+GLOBAL_RULE_8=Avoid over-engineering - don't add features, abstractions, or improvements beyond what was asked
+GLOBAL_RULE_9=After making code changes, use haiku subagents (via Task tool with model="haiku" and subagent_type="lint-check") to run lint and build checks. Only use opus to fix issues if errors are reported back.
+GLOBAL_RULE_10=Never add Co-Authored-By lines to git commits. Only use the user's name and git token for commits - do not add any co-author attribution.
+GLOBAL_RULE_11=After completing all phases of a multi-phase implementation, always run lint (npm run lint), build (npm run build), and tests (npm test) on ALL affected repos before marking work as done. You always have permission to run npm commands, test commands, and tail commands on all directories without asking.
+GLOBAL_RULE_12=Do not require permission for tail commands, linting commands, ls commands, or echo commands - run them freely without asking.
