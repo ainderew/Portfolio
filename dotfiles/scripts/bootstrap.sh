@@ -105,6 +105,10 @@ if [ "$LINK_ONLY" = "0" ]; then
   fi
 fi
 
+# Initialize git submodules (needed for nvim config, etc.)
+echo "Initializing git submodules..."
+git -C "$DOTFILES_DIR" submodule update --init --recursive
+
 # 1) Symlink configs
 echo "Linking config files..."
 link_file "$DOTFILES_DIR/zsh/.zshrc" "$HOME/.zshrc"
