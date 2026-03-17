@@ -1,22 +1,21 @@
-import { useRef } from 'react';
-import type { NextPage } from 'next';
-import Head from 'next/head';
-import AboutMe from '../components/about-me';
-import Experience from '../components/pages/home/experience-section/experience';
-import Banner from '../components/banner';
-import WebNav from '../components/web-nav';
+import { useRef } from "react";
+import type { NextPage } from "next";
+import Head from "next/head";
+import AboutMe from "../components/about-me";
+import Experience from "../components/pages/home/experience-section/experience";
+import Banner from "../components/banner";
+import WebNav from "../components/web-nav";
 
-import { motion } from 'framer-motion';
-import { staggerContainer } from '../framer-animation/variants';
-import SocialWidget from '../components/social-widget';
-import AboutMeBanner from '../components/about-me-banner';
-import Contact from '../components/contact';
-import HorizontalProjects from '../components/horizontal-projects';
-import WorkMobile from '../components/work-mobile';
-import Intro from '../components/intro';
+import { motion } from "framer-motion";
+import { staggerContainer } from "../framer-animation/variants";
+import SocialWidget from "../components/social-widget";
+import AboutMeBanner from "../components/about-me-banner";
+import Contact from "../components/contact";
+import HorizontalProjects from "../components/horizontal-projects";
+import WorkMobile from "../components/work-mobile";
+import Intro from "../components/intro";
 
 const Home: NextPage = () => {
-
   const workRef = useRef<HTMLDivElement>(null);
   const contactRef = useRef<HTMLDivElement>(null);
   const aboutRef = useRef<HTMLDivElement>(null);
@@ -43,9 +42,15 @@ const Home: NextPage = () => {
     <div className="relative w-full">
       <Head>
         <title>Andrew Pinon | Portfolio</title>
-        <meta name="description" content="Portfolio of Andrew Pinon - Frontend Developer specializing in React, Next.js, and modern web animations." />
+        <meta
+          name="description"
+          content="Portfolio of Andrew Pinon - tech enjoyer"
+        />
         <meta property="og:title" content="Andrew Pinon | Portfolio" />
-        <meta property="og:description" content="Portfolio of Andrew Pinon - Frontend Developer specializing in React, Next.js, and modern web animations." />
+        <meta
+          property="og:description"
+          content="Portfolio of Andrew Pinon - Software Developer"
+        />
         <meta property="og:type" content="website" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>

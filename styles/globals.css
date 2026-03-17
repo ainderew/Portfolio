@@ -17,6 +17,16 @@ body {
 	padding: 0;
 }
 
+/* Hero Typography */
+.hero-display {
+	font-family: 'Cormorant Garamond', Georgia, serif;
+	font-weight: 700;
+}
+
+.hero-mono {
+	font-family: 'Fira Code', 'Courier New', monospace;
+}
+
 /* Custom Noise Texture Overlay */
 .noise-overlay {
 	position: fixed;
