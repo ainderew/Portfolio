@@ -131,12 +131,18 @@ alias ssh_nginx="ssh -i ~/.ssh/tm-andrew azureuser@172.173.145.99"
 alias ssh_tm_website="ssh -i ~/.ssh/tm-andrew james@167.71.186.1"
 
 # BB
-alias ssh_bb="ssh -i ~/.ssh/bg-andrew root@128.199.145.173"
+alias ssh_bb="ssh -i ~/.ssh/bg-andrew root@194.233.79.158"
 
 # Turns on work VPN in terminal using .ovpn file given by IT and openvpn brew package
 alias vpn_on="sudo openvpn --config /System/Volumes/Data/Users/AndrewPinon/Library/Application\ Support/OpenVPN\ Connect/profiles/1732035072633.ovpn"
 
-alias ta="tmux attach-session -t"
+function ta() {
+  if [ "$1" = "theoria" ] && ! tmux has-session -t theoria 2>/dev/null; then
+    "$HOME/theoria_repos/start.sh"
+  else
+    tmux attach-session -t "$1"
+  fi
+}
 
 # Claude Code
 alias cc="claude"

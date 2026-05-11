@@ -51,3 +51,16 @@ source ~/.orbstack/shell/init.zsh 2>/dev/null || :
 # Local secrets (not tracked)
 [[ -f "$HOME/.zshrc.secrets" ]] && source "$HOME/.zshrc.secrets"
 export PATH="$HOME/.local/bin:$PATH"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/AndrewPinon/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/AndrewPinon/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/AndrewPinon/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/AndrewPinon/google-cloud-sdk/completion.zsh.inc'; fi
+
+# bun completions
+[ -s "/Users/AndrewPinon/.bun/_bun" ] && source "/Users/AndrewPinon/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
