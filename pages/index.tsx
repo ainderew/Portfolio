@@ -3,17 +3,14 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import AboutMe from "../components/about-me";
 import Experience from "../components/pages/home/experience-section/experience";
-import Banner from "../components/banner";
 import WebNav from "../components/web-nav";
 
 import { motion } from "framer-motion";
 import { staggerContainer } from "../framer-animation/variants";
 import SocialWidget from "../components/social-widget";
-import AboutMeBanner from "../components/about-me-banner";
 import Contact from "../components/contact";
 import HorizontalProjects from "../components/horizontal-projects";
 import WorkMobile from "../components/work-mobile";
-import Intro from "../components/intro";
 
 const Home: NextPage = () => {
   const workRef = useRef<HTMLDivElement>(null);
@@ -54,7 +51,6 @@ const Home: NextPage = () => {
         <meta property="og:type" content="website" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      <Intro />
       <motion.div
         variants={staggerContainer}
         initial="initial"
@@ -66,16 +62,14 @@ const Home: NextPage = () => {
           scrollToAbout={scrollToAbout}
           scrollToContact={scrollToContact}
         />
-        <Banner scrollFunction={scrollToWork} />
         <SocialWidget />
       </motion.div>
 
-      <Experience />
-
-      <div className="relative">
-        <AboutMeBanner aboutRef={aboutRef} />
+      <div ref={aboutRef}>
         <AboutMe />
       </div>
+
+      <Experience />
 
       <div ref={workRef} className="w-full h-px" />
       <HorizontalProjects />
