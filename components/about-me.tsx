@@ -181,6 +181,9 @@ const AboutMe: React.FC = () => {
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start start', 'end end'] });
   const videoProgress = useTransform(scrollYProgress, VIDEO_RANGE, [0, 1], { ease: easeInOut });
   const camScale = useTransform(scrollYProgress, [0, 0.1], [1.03, 1]);
+  // A phone can't show the wide exploded view and stay close on Andrew at once, so the camera
+  // starts zoomed in and pulls back as the desk comes apart, letting the parts reach the screen edges.
+  const phoneScale = useTransform(videoProgress, [0, 1], [1.45, 1]);
   const frameOpacity = useTransform(scrollYProgress, [0.88, 0.96], [1, 0.55]);
   const listOpacity = useTransform(scrollYProgress, [CALLOUTS_IN, CALLOUTS_IN + 0.06, ...CALLOUTS_OUT], [0, 1, 1, 0]);
   const fallbackOpacity = useTransform(scrollYProgress, [0.25, 0.55], [0, 1]);
@@ -283,10 +286,10 @@ const AboutMe: React.FC = () => {
   }
 
   // Desktop: 16:9 with callouts in the side margins. Tablet: 16:9 with the list overlaid.
-  // Phone: a 4:3 crop centred on Andrew, with the list underneath.
+  // Phone: full-width 16:9 with a zoom pull-back (phoneScale), and the list underneath.
   const margin = isXl ? 240 : 190;
   const frameStyle = isPhone
-    ? { width: '100vw', aspectRatio: '4 / 3', top: '45%', x: '-50%', y: '-50%' }
+    ? { width: '100vw', aspectRatio: `${ASPECT}`, top: '50%', x: '-50%', y: '-50%' }
     : {
         width: isLg
           ? `min(calc(100vw - ${margin * 2}px), calc(72vh * ${ASPECT}))`
@@ -316,7 +319,10 @@ const AboutMe: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.4, ease: EASE_OUT, delay: 0.45 }}
           >
-            <motion.div className="absolute inset-0 origin-[50%_45%]" style={{ scale: camScale }}>
+            <motion.div
+              className={`absolute inset-0 ${isPhone ? 'origin-[45%_45%]' : 'origin-[50%_45%]'}`}
+              style={{ scale: isPhone ? phoneScale : camScale }}
+            >
               <video
                 ref={videoRef}
                 poster={ASSEMBLED}
@@ -324,11 +330,11 @@ const AboutMe: React.FC = () => {
                 playsInline
                 preload="none"
                 aria-hidden="true"
-                className="absolute inset-0 h-full w-full object-cover object-[45%_50%]"
+                className="absolute inset-0 h-full w-full object-cover"
               />
               {videoFailed && (
                 <motion.div className="absolute inset-0" style={{ opacity: fallbackOpacity }}>
-                  <Image src={EXPLODED} alt="" fill sizes="100vw" className="object-cover object-[45%_50%]" />
+                  <Image src={EXPLODED} alt="" fill sizes="100vw" className="object-cover" />
                 </motion.div>
               )}
               {/* Feather the frame into the black page */}
