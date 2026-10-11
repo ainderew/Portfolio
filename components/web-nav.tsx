@@ -1,8 +1,10 @@
+import { useState } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { fadeIn } from '../framer-animation/variants';
 import { useScrollHider } from '../hooks/scrollHide';
 import Magnetic from './magnetic';
+import ResumeModal from './resume-modal';
 
 interface Props {
   scrollToWork?: () => void;
@@ -12,6 +14,7 @@ interface Props {
 
 const WebNav: React.FC<Props> = ({ scrollToWork, scrollToAbout, scrollToContact }) => {
   const classValue = useScrollHider();
+  const [resumeOpen, setResumeOpen] = useState(false);
 
   return (
     <nav
@@ -65,11 +68,18 @@ const WebNav: React.FC<Props> = ({ scrollToWork, scrollToAbout, scrollToContact 
 
       <motion.div variants={fadeIn('up')} className="flex-1 flex justify-end">
         <Magnetic>
-          <button className="px-8 py-3 bg-white text-black font-bold text-sm uppercase tracking-widest hover:bg-accent hover:text-white transition-all duration-300">
+          <button
+            type="button"
+            aria-haspopup="dialog"
+            onClick={() => setResumeOpen(true)}
+            className="px-8 py-3 bg-white text-black font-bold text-sm uppercase tracking-widest hover:bg-accent hover:text-white transition-all duration-300"
+          >
             Resume
           </button>
         </Magnetic>
       </motion.div>
+
+      <ResumeModal open={resumeOpen} onClose={() => setResumeOpen(false)} />
     </nav>
   );
 };
