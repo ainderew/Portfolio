@@ -63,13 +63,10 @@ interface Callout {
 }
 
 const callouts: Callout[] = [
-  { title: 'Andrew', text: 'Senior engineer at Expertise.com', anchor: [0.36, 0.17], label: [-0.02, 0.12], side: 'left' },
-  { title: 'Plant', text: 'Still alive. Mostly.', anchor: [0.08, 0.5], label: [-0.02, 0.46], side: 'left' },
+  { title: 'Andrew', text: 'Senior software engineer at Forbes Advisor', anchor: [0.36, 0.17], label: [-0.02, 0.12], side: 'left' },
   { title: 'Toolchain', text: 'Neovim, 75+ plugins · tmux · Kitty', anchor: [0.5, 0.58], label: [-0.02, 0.8], side: 'left' },
   { title: 'Fuel', text: 'Coffee. A lot.', anchor: [0.65, 0.33], label: [0.6, 0.1], side: 'top' },
   { title: 'Rubber duck', text: 'Senior debugger.', anchor: [0.93, 0.07], label: [1.02, 0.06], side: 'right' },
-  { title: 'Interface', text: 'React · Next.js · TypeScript', anchor: [0.85, 0.34], label: [1.02, 0.32], side: 'right' },
-  { title: 'Backend', text: 'Node.js · GraphQL · PostgreSQL', anchor: [0.64, 0.64], label: [1.02, 0.62], side: 'right' },
 ];
 
 // Scroll timeline, as fractions of the pinned section
